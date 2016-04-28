@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+        <dl id="entry">
+
+            <dt> R.ValidForm( form , func ) </dt>
+            <dd>
+                <p>表单验证工具。</p>
+                
+                <blockquote>
+                    <p> <strong>form</strong>  表单对象</p>
+                    <p> <strong>func</strong>  回调函数，用于处理错误信息</p>
+                </blockquote>
+                
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong> error </strong> 错误消息</p>
+                    <p> <strong> ele </strong> 当前元素</p>
+                </blockquote>
+
+                <pre>R.ValidForm( this , function( error, ele ){ alert( error ); });</pre>
+                
+                <form action="?" method="post" onsubmit="return R.ValidForm( this , function( html ){ alert( html ); });">
+
+                <p> 名称：<input type="text" name="account" value="" data-valid-name="用户名称" data-valid-empty="yes" /> </p>
+                
+                <p> 金额：<input type="text" name="price" value="" data-valid-name="消费金额" data-valid-number="yes" /> </p>
+
+                <p> <button type="submit">测试</button> </p>
+                
+                </form>
+                
+				<p>表单元素支持以下自定义元素</p>
+                
+                <table>
+                    <thead>
+                    <tr>
+                        <td>属性：</td>
+                        <td>取值：</td>
+                        <td>描述：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            data-valid-name
+                        </td>
+                        <td>提示文字</td>
+                        <td>
+                            * 必填项
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-empty
+                        </td>
+                        <td> "yes" 强制检查<br />"no" 值可为空，不为空时检查 </td>
+                        <td>
+                            为空检查
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-number
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            数字类检查
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-secure
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            安全字符检查
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-password
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            密码类型属性，CSS 表达式或其他
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-ip
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            IP地址型属性
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-url
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            链接地址属性
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-email
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            邮箱地址属性
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-idcard
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            身份证号属性
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-phone
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            电话号码属性
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-mobile
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            手机号码属性
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-datetime
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            时间日期属性
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-regexp
+                        </td>
+                        <td> 同上 </td>
+                        <td>
+                            正则表达式
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-confirm
+                        </td>
+                        <td> 字符串 </td>
+                        <td>
+                            将当前值与目标元素的值进行比较（CSS 选择器）
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-minsize
+                        </td>
+                        <td> 数值 </td>
+                        <td>
+                            字符最小长度
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-maxsize
+                        </td>
+                        <td> 数值 </td>
+                        <td>
+                            字符最大长度
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            data-valid-accept
+                        </td>
+                        <td> 字符串 </td>
+                        <td>
+                            允许上传的扩展名（以空隔分隔）
+                        </td>
+                    </tr>
+                </table>
+                
+                <p>使用范例：</p>
+                
+                <pre> &lt;input type="text" name="account" value="" data-valid-name="用户名称" data-valid-empty="yes" /&gt; </pre>
+
+            </dd>
+
+            <dt> R.Serialize( form, func, link ) </dt>
+            <dd>
+
+                <p>将表单元素项和值转为序列化数据。</p>
+                
+                <blockquote>
+                    <p> <strong>form</strong>  表单对象</p>
+                    <p> <strong>func</strong>  元素值编码使用的函数，默认使用 encodeURIComponent</p>
+                    <p> <strong>link</strong>  是否将结果转换为 URL 字符串，请使用 &</p>
+                </blockquote>
+
+                <pre>R.Serialize( R("form").choice(0) );</pre>
+
+                <p>将表单元素项和值转为 URL 字符串。</p>
+
+                <pre>R.Serialize( R("form").choice(0), function( str ){ return escape( str ); } );</pre>
+
+                <p> <button type="submit" id="btn_url">测试</button> </p>
+
+                <p id="url">  </p>
+
+            </dd>
+            
+            <dt> R.Password( string, func ) </dt>
+            <dd>
+
+                <p>密码强度测试。</p>
+                
+                <blockquote>
+                    <p> <strong>string</strong>  字符串</p>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+                
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>value </strong>  强度级别值</p>
+                    <p> <strong>level</strong>  强度级别，分为：["极佳","很好","一般","简单"]</p>
+                </blockquote>
+
+                <pre>R.Password( R("form").choice(0) );</pre>
+
+                <p> 密码：<input type="text" name="password" id="password" value="" /> </p>
+
+                <p id="pw"> </p>
+
+            </dd>
+            
+            <dt> R.Config() </dt>
+            <dd>
+
+                <p>将 RGB 颜色值转为 16 进制颜色值。</p>
+
+                <pre>R.Config( [255,255,255] );</pre>
+
+            </dd>
+
+        </dl>
+        
+        <script type="text/javascript">
+
+        /************* 表单序列化 测试 ****************/
+
+        R("#btn_url").bind('click',function(){
+
+            R("#url").html( R.Serialize( R("form").item(0), false, "&" ) );
+
+        });
+        
+        /************* 密码强度测试 测试 ****************/
+
+        R("#password").bind('keyup',function(){
+        
+             R.Password( this.value, function( value, level ){             
+                R("#pw").html( "密码强度："+value +" 强度级别："+level );             
+             });        
+                         
+        });
+        
+        </script>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

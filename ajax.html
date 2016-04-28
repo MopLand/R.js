@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+
+        <dl id="entry">
+
+            <dt> R.Ajax( url ) </dt>
+            <dd>
+
+                <p>异步交互请求</p>
+
+                <pre>var ajax = new R.Ajax("res/example.html");</pre>
+
+                <p><script>var ajax = new R.Ajax("res/example.html");</script></p>
+
+                <p><button type="button" id="ajax">测试</button></p>
+
+                <p id="ajax_box">这里将会显示 Ajax 内容！</p>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="50%">事件：</td>
+                        <td>描述：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            onLoading
+                        </td>
+                        <td>
+                            开始加载时响应
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            onLoaded
+                        </td>
+                        <td>
+                            加载完成时响应
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            onInteractive
+                        </td>
+                        <td>
+                            开始交互时响应
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            onCompletion
+                        </td>
+                        <td>
+                            读取完毕时响应
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            onError
+                        </td>
+                        <td>
+                            遇到错误时响应
+                        </td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt> .setVar() </dt>
+            <dd>
+
+                <p>设置请求的参数和值。</p>
+
+                <pre>ajax.setVar({
+"key":"val",
+"&get":"abc"
+});</pre>
+
+                <p><script>ajax.setVar({	"key":"val",	"&get":"abc"});</script></p>
+
+            </dd>
+
+            <dt> .setHeader() </dt>
+            <dd>
+
+                <p>设置请求的头部信息。</p>
+
+                <pre>ajax.setHeader( "Content-Type" , "application/x-www-form-urlencoded" );</pre>
+
+            </dd>
+
+            <dt> .method </dt>
+            <dd>
+
+                <p>设置发送请求的方式。</p>
+
+                <pre>ajax.method = "GET";</pre>
+
+                <p>以下可选值，默认为 GET：</p>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="50%">值：</td>
+                        <td>描述：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            GET
+                        </td>
+                        <td>
+                            完全 GET 提交
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            POST
+                        </td>
+                        <td>
+                            完全 POST 提交
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            GET&amp;POST
+                        </td>
+                        <td>
+                            GET 与 POST 混合提交
+                        </td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt> .getURL() </dt>
+            <dd>
+
+                <p>返回请求的URL地址。</p>
+
+                <pre>ajax.getURL();</pre>
+
+                <p><script>document.write( ajax.getURL() );</script></p>
+
+            </dd>
+
+            <dt> .send() </dt>
+            <dd>
+
+                <p>发送请求。</p>
+
+                <pre>ajax.send();</pre>
+
+                <p><script>ajax.send();</script></p>
+
+            </dd>
+
+        </dl>
+
+        <script type="text/javascript">
+
+
+        /************* Ajax 测试 ****************/
+
+        R("#ajax").bind( 'click' , function(){
+
+            var ajax = new R.Ajax("res/example.html");
+            ajax.setVar({
+                "key":"val",
+                "get":"abc"
+            });
+            ajax.onCompletion = function(){
+                R("#ajax_box").html( ajax.response );
+            };
+            ajax.send();
+
+        } );
+
+
+        </script>
+
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+        <dl id="entry">
+
+            <dt> R.String( string ) </dt>
+            <dd>
+                <p>执行字符串处理操作。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  执行字符串处理操作的字符串</p>
+                </blockquote>
+            
+            </dd>
+
+            <dt> .output() </dt>
+            <dd>
+
+                <p>返回字符串自身。</p>
+
+                <pre>R.String(" example ").output();</pre>
+
+                <p><script>document.write( R.String(" example ").output() );</script></p>
+
+            </dd>
+
+            <dt> .pad( length, string, type ) </dt>
+            <dd>
+
+                <p>将字符串使用字符填充至指定长度。</p>
+                
+                <blockquote>
+                    <p> <strong>length</strong>  目标长度</p>
+                    <p> <strong>string</strong>  填充内容</p>
+                    <p> <strong>type</strong>  填充方式，0：从左开始，1：从右 开始，2：两边同时</p>
+                </blockquote>
+
+                <pre>R.String("R.js").pad( 10, "~", 2 );</pre>
+
+                <p><script>document.write( R.String("R.js").pad( 10, "~", 2 ) ); </script></p>
+
+            </dd>
+            
+            <dt> .trim() </dt>
+            <dd>
+
+                <p>将字符串两边的空白字符去除。</p>
+
+                <pre>R.String(" ex ").trim().output() + R.String(" ample ").trim().output();</pre>
+
+                <p><script>document.write( R.String(" ex ").trim().output() + R.String(" ample ").trim().output() );</script></p>
+
+            </dd>
+
+            <dt> .length() </dt>
+            <dd>
+
+                <p>返回字符串字节长度。</p>
+
+                <pre>R.String(" example ").length();</pre>
+
+                <p><script>document.write( R.String(" example ").length() );</script></p>
+
+            </dd>
+
+            <dt> .random( length ) </dt>
+            <dd>
+
+                <p>产生一个指定长度的随机字符串，并可以控制它的组成方式（大小写，数字）。</p>
+
+                <blockquote>
+                    <p> <strong>length</strong>  字符串长度</p>
+                    <p> <strong>upper</strong>  是否允许大写字母，默认允许</p>
+                    <p> <strong>lower</strong>  是否允许小写字母，默认允许</p>
+                    <p> <strong>number</strong>  是否允许数字，默认允许</p>
+                </blockquote>
+                
+                <pre>R.random(40,true,true,true);</pre>
+
+                <p><button type="button" id="random">测试</button> <span id="random_box"></span> </p>
+
+            </dd>
+
+            <dt> .format() </dt>
+            <dd>
+
+                <p>返回格式化后的字符串。</p>
+
+                <pre>R.String("今天是{0}年{1}月{2}日").format( R.date("y"), R.date("m"), R.date("d") );</pre>
+
+                <p><script>document.write( R.String("今天是{0}年{1}月{2}日").format( R.date("y"), R.date("m"), R.date("d") ).output() );</script></p>
+
+            </dd>
+
+            <dt> .leftTrim() </dt>
+            <dd>
+
+                <p>将字符串左边的空白字符去除。</p>
+
+                <pre>R.String(" example ").leftTrim();</pre>
+
+                <p><script>document.write( R.String(" example ").leftTrim().output() );</script></p>
+
+            </dd>
+
+            <dt> .rightTrim() </dt>
+            <dd>
+
+                <p>将字符串右边的空白字符去除。</p>
+
+                <pre>R.String(" example ").rightTrim();</pre>
+
+                <p><script>document.write( R.String(" example ").rightTrim().output() );</script></p>
+
+            </dd>
+
+            <dt> .stripScript() </dt>
+            <dd>
+
+                <p>将字符串中 Script 标签过滤。</p>
+
+                <pre>R.String(" example ").stripScript();</pre>
+
+                <p><script>document.write( R.String(" example ").stripScript().output() );</script></p>
+
+            </dd>
+
+            <dt> .stripTags( [allowed] ) </dt>
+            <dd>
+
+                <p>将字符串中 HTML 标签过滤。</p>
+
+                <pre>R.String( ' example ' ).stripTags();</pre>
+
+                <pre>R.String( '&lt;p&gt;Kevin&lt;/p&gt; &lt;br /&gt;&lt;b&gt;van&lt;/b&gt; &lt;i&gt;Zonneveld&lt;/i&gt;' ).stripTags( '&lt;i&gt;&lt;b&gt;' );</pre>
+
+                <p><script>document.write( R.String(" example ").stripTags().output() );</script></p>
+
+            </dd>
+
+            <dt> .encodeHTML() </dt>
+            <dd>
+
+                <p>将字符串中 HTML 标签进行编码。</p>
+
+                <pre>R.String(" example ").encodeHTML();</pre>
+
+                <p><script>document.write( R.String('<string> example </strong>').encodeHTML() );</script></p>
+
+            </dd>
+            
+            <dt> .decodeHTML() </dt>
+            <dd>
+
+                <p>将已编码的 HTML 标签进行解码。</p>
+
+                <pre>R.String(" example ").decodeHTML();</pre>
+
+                <p><script>document.write( R.String(" 中文 example ").decodeHTML() );</script></p>
+
+            </dd>
+            
+            <dt> .escapeSymbol() </dt>
+            <dd>
+
+                <p>编码特殊符号。</p>
+
+                <pre>R.String(" %&+/#=").escapeSymbol();</pre>
+
+                <p><script>document.write( R.String(" %&+/#=").escapeSymbol() );</script></p>
+
+            </dd>
+            
+            <dt> .toCamelCase() </dt>
+            <dd>
+
+                <p>将 CSS 样式属性名转为 JS 形式。</p>
+
+                <pre>R.String("z-index").toCamelCase();</pre>
+
+                <p><script>document.write( R.String("z-index").toCamelCase() );</script></p>
+
+            </dd>
+
+            <dt> .unicode() </dt>
+            <dd>
+
+                <p>将 ASCII 字符串转换为 Unicode。</p>
+
+                <pre>R.String(" example ").unicode();</pre>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="50%">原始：</td>
+                        <td>结果：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <textarea id="a2u_source" rows="4" style="width:96%;">abc</textarea>
+                        </td>
+                        <td>
+                            <textarea id="a2u_result" rows="4" style="width:96%;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">                        					
+                            <button type="button" id="a2u_encrypt">执行</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt> .ascii() </dt>
+            <dd>
+
+                <p>将 Unicode 字符串转换为 ASCII。</p>
+
+                <pre>R.String(" example ").ascii();</pre>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="50%">原始：</td>
+                        <td>结果：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <textarea id="u2a_source" rows="4" style="width:96%;">&amp;#97;&amp;#98;&amp;#99;</textarea>
+                        </td>
+                        <td>
+                            <textarea id="u2a_result" rows="4" style="width:96%;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">                        					
+                            <button type="button" id="u2a_encrypt">执行</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </dd>
+            
+            <dt> .eval() </dt>
+            <dd>
+
+                <p>将字符串进行计算。</p>
+
+                <pre>R.String("var obj = '123';").eval();</pre>
+
+            </dd>
+
+            <dt> .get( key[, url] ) </dt>
+            <dd>				
+
+                <p>
+                    提取 URL 中的指定参数的值。
+                </p>
+
+                <blockquote>
+                    <p> <strong>key</strong>  参数名称</p>
+                    <p> <strong>url</strong>  URL 字符串，默认为当前 location.href</p>
+                </blockquote>
+
+                <pre>R.get("key");</pre>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="50%">原始：</td>
+                        <td>结果：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <textarea id="url_source" rows="4" style="width:96%;">http://www.veryide.com/?key=abc</textarea>
+                        </td>
+                        <td>
+                            <textarea id="url_result" rows="4" style="width:96%;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">                        					
+                            <button type="button" id="url_action">测试</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </dd>
+
+        </dl>
+
+        <script type="text/javascript">
+
+
+        /************* Base64 测试 ****************/
+
+        R("#a2u_encrypt").bind('click',function(){
+
+            R("#a2u_result").value( R.String( R("#a2u_source").value() ).unicode().output() );		
+
+        });
+
+        R("#u2a_encrypt").bind('click',function(){
+
+            R("#u2a_result").value( R.String( R("#u2a_source").value() ).ascii().output() );		
+
+        });
+
+        </script>
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

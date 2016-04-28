@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+        <dl id="entry">
+
+            <dt> R.Browser </dt>
+            <dd>
+                <p>提供浏览器识别、版本提取和其它信息。</p>
+
+                <pre>R.Browser</pre>
+                
+                <p>目前支持以下浏览器的识别：</p>
+                
+                <!--p>
+                    <img src="res/browser/ie.png" /> Internet Explorer
+                    <img src="res/browser/firefox.png" /> Firefox
+                    <img src="res/browser/chrome.png" /> Chrome
+                    <img src="res/browser/safari.png" /> Safari
+                    <img src="res/browser/opera.png" /> Opera
+                </p-->
+                
+                <table>
+                    <tr>
+                        <td width="20%">
+                            <img src="res/browser/ie.png" /> Internet Explorer
+                        </td>
+                        
+                        <td width="20%">
+                            <img src="res/browser/firefox.png" /> Firefox
+                        </td>
+                        
+                        <td width="20%">
+                            <img src="res/browser/chrome.png" /> Chrome
+                        </td>
+                        
+                        <td width="20%">
+                            <img src="res/browser/safari.png" /> Safari
+                        </td>
+                        
+                        <td width="20%">
+                            <img src="res/browser/opera.png" /> Opera
+                        </td>
+                    </tr>
+                </table>
+
+            </dd>			
+
+            <dt> R.Browser.name </dt>
+            <dd>
+
+                <p>返回当前浏览器名称</p>
+
+                <pre>R.Browser.name</pre>
+
+                <p><script>document.write( '<img src="res/browser/'+ R.Browser.name +'.png" /> ' + R.Browser.name );</script></p>
+
+            </dd>
+
+            <dt> R.Browser.version </dt>
+            <dd>
+
+                <p>返回当前浏览器版本信息</p>
+
+                <pre>R.Browser.version</pre>
+
+                <p><script>document.write( R.Browser.version );</script></p>
+
+            </dd>
+
+            <dt> R.Browser.lang </dt>
+            <dd>
+
+                <p>返回当前浏览器所使用的语言。</p>
+
+                <pre>R.Browser.lang</pre>
+
+                <p><script>document.write( R.Browser.lang );</script></p>
+
+            </dd>
+
+            <dt> R.Browser.mobile </dt>
+            <dd>
+
+                <p>检测当前浏览器是否工作在移动设备（iPhone | iPad | iPod | Android）上。</p>
+
+                <pre>R.Browser.mobile</pre>
+
+                <p><script>document.write( R.Browser.mobile );</script></p>
+
+            </dd>
+
+            <dt> R.Browser.msie </dt>
+            <dd>
+
+                <p>检测当前浏览器是否为 Internet Explorer </p>
+
+                <pre>R.Browser.msie</pre>
+
+                <p><script>document.write( R.Browser.msie );</script></p>
+
+            </dd>
+
+            <dt> R.Browser.opera </dt>
+            <dd>
+
+                <p>检测当前浏览器是否为 Opera </p>
+
+                <pre>R.Browser.opera</pre>
+
+                <p><script>document.write( R.Browser.opera );</script></p>
+
+            </dd>
+
+            <dt> R.Browser.safari </dt>
+            <dd>
+
+                <p>检测当前浏览器是否为 Safari </p>
+
+                <pre>R.Browser.safari</pre>
+
+                <p><script>document.write( R.Browser.safari );</script></p>
+
+            </dd>			
+
+            <dt> R.Browser.firefox </dt>
+            <dd>
+
+                <p>检测当前浏览器是否为 Firefox </p>
+
+                <pre>R.Browser.firefox</pre>
+
+                <p><script>document.write( R.Browser.firefox );</script></p>
+
+            </dd>
+
+            <dt> R.Browser.chrome </dt>
+            <dd>
+
+                <p>检测当前浏览器是否为 Chrome </p>
+
+                <pre>R.Browser.chrome</pre>
+
+                <p><script>document.write( R.Browser.chrome );</script></p>
+
+            </dd>
+
+        </dl>
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

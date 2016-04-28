@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+        <dl id="entry">
+
+            <dt> R.Array( array ) </dt>
+            <dd>				
+
+                <p>执行数组处理操作初始化。</p>
+
+				<blockquote>
+                    <p> <strong>array</strong>  执行数组处理操作的数组对象</p>
+                </blockquote>
+
+            </dd>
+
+            <dt> .output() </dt>
+            <dd>
+
+                <p>返回数据对象</p>
+
+                <pre>R.Array( ['A','B','C'] ).output().join(",");</pre>
+
+                <p><script>document.write( R.Array( ['A','B','C'] ).output().join(",") );</script></p>
+
+            </dd>
+
+            <dt> .first() </dt>
+            <dd>				
+
+                <p>返回数组souce中的第一个元素。</p>
+                
+                <pre> R.Array( ['A','B','C'] ).first(); </pre>
+
+                <p> <script> document.write( R.Array( ['A','B','C'] ).first() ); </script></p>
+
+            </dd>
+
+            <dt> .last() </dt>
+            <dd>				
+
+                <p>返回数组souce中的最后一个元素。</p>
+                
+                <pre> R.Array( ['A','B','C'] ).last(); </pre>
+
+                <p> <script> document.write( R.Array( ['A','B','C'] ).last() ); </script></p>
+
+            </dd>
+
+            <dt> .indexOf( val ) </dt>
+            <dd>				
+
+                <p>测试在数组中是否包含某个值，如果存在则返回索引值，否则返回 -1。</p>
+
+				<blockquote>
+                    <p> <strong>val</strong>  要从数组中查找的值</p>
+                </blockquote>
+                
+                <pre> R.Array( ['A','B','C'] ).indexOf( 'B' ); </pre>
+
+                <p> <script> document.write( R.Array( ['A','B','C'] ).indexOf( 'B' ) ); </script></p>
+
+            </dd>
+
+            <dt> .min() </dt>
+            <dd>				
+
+                <p>获取数组中最小的元素。</p>
+                
+                <pre> R.Array( [1,2,3,4,5,6] ).min(); </pre>
+
+                <p> <script> document.write( R.Array( [1,2,3,4,5,6] ).min() ); </script></p>
+
+            </dd>
+            
+            <dt> .max() </dt>
+            <dd>				
+
+                <p>获取数组中最大的元素。</p>
+                
+                <pre> R.Array( [1,2,3,4,5,6] ).max(); </pre>
+
+                <p> <script> document.write( R.Array( [1,2,3,4,5,6] ).max() ); </script></p>
+
+            </dd>
+            
+            <dt> .clear() </dt>
+            <dd>				
+
+                <p>从数组中移除所有元素。</p>
+                
+                <pre> R.Array( ['A','B','C'] ).clear(); </pre>
+
+                <p> <script> document.write( R.Array( ['A','B','C'] ).clear().output().join() ); </script></p>
+
+            </dd>
+
+        </dl>
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+        <dl id="entry">
+
+            <dt> R.Validate </dt>
+            <dd>
+                <p> 对象验证方法。 </p>
+            </dd>
+
+            <dt> .is( object ) </dt>
+            <dd>
+
+                <p>判断对象类型。</p>
+                
+                <blockquote>
+                    <p> <strong>object</strong> 需要验证的对象</p>
+                </blockquote>
+                
+                <pre>R.is( [1,2,3] );</pre>	
+
+                <p>
+                        <script type="text/javascript">
+                        document.write( R.Validate.is( [1,2,3] ) );
+                        </script>
+                </p>                
+                
+                <pre>R.is( document.body );</pre>	
+
+                <p>
+                        <script type="text/javascript">
+                        document.write( R.Validate.is( document.body ) );
+                        </script>
+                </p>
+
+            </dd>
+
+            <dt> R.Validate.Array( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为数组。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong> 需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Array( [1,2,3] ); </pre>
+
+                <p> <script> document.write( R.Validate.Array( [1,2,3] ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Function( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为函数。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong> 需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Function( function(){} ); </pre>
+
+                <p> <script> document.write( R.Validate.Function( function(){} ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Object( object ) </dt>
+            <dd>		
+
+                <p>验证对象是否为对象。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong> 需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Object( alert ); </pre>
+
+                <p> <script> document.write( R.Validate.Object( alert ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Date( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为日期。</p>
+
+				<blockquote>
+                    <p> <strong>object</strong> 需要验证的对象或字符串</p>
+                </blockquote>
+
+                <pre> R.Validate.Date( new Date() ); </pre>
+
+                <p> <script> document.write( R.Validate.Date( new Date() ) ); </script></p>
+
+                <pre> R.Validate.Date( '2012-12-22' ); </pre>
+
+                <p> <script> document.write( R.Validate.Date( '2012-12-22' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Number( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为数值。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong> 需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Number( 9 ); </pre>
+
+                <p> <script> document.write( R.Validate.Number( 9 ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.String( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为字符串。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong> 需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.String( 'Mo' ); </pre>
+
+                <p> <script> document.write( R.Validate.String( 'Mo' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Defined( object ) </dt>
+            <dd>
+
+                <p>验证对象是否已定义。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong>  需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Defined( Mo ); </pre>
+
+                <p> <script> document.write( R.Validate.Defined( Mo ) ); </script></p>
+
+            </dd>
+            
+            <dt> R.Validate.Empty( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为空。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong>  需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Empty( '' ); </pre>
+
+                <p> <script> document.write( R.Validate.Empty( '' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Boolean( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为布尔值。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong>  需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Boolean( false ); </pre>
+
+                <p> <script> document.write( R.Validate.Boolean( false ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Window( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为 window 。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong>  需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Window( window ); </pre>
+
+                <p> <script> document.write( R.Validate.Window( window ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Document( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为 document 。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong>  需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Document( document ); </pre>
+
+                <p> <script> document.write( R.Validate.Document( document ) ); </script></p>
+
+            </dd>
+            
+            <dt> R.Validate.Element( object ) </dt>
+            <dd>
+
+                <p>验证对象是否为元素。</p>
+
+                <blockquote>
+                    <p> <strong>object</strong>  需要验证的对象</p>
+                </blockquote>
+
+                <pre> R.Validate.Element( document.body ); </pre>
+
+                <p> <script> document.write( R.Validate.Element( document.body ) ); </script></p>
+
+            </dd>
+
+            <!--dt> R.Validate.XML() </dt>
+            <dd>
+
+                <p>验证对象是否为 XML 对象。</p>
+
+                <pre> R.Validate.XML( [] ); </pre>
+
+                <p> <script> document.write( R.Validate.XML( [] ) ); </script></p>
+
+            </dd-->
+
+            <dt> R.Validate.Chinese( string[, all] ) </dt>
+            <dd>
+
+                <p>验证字符串是否包含中文。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的字符串</p>
+                    <p> <strong>all</strong>  可选，ture 或 false，是否全部为中文</p>
+                </blockquote>
+
+                <pre> R.Validate.Chinese( '我是中文' ); </pre>
+
+                <p> <script> document.write( R.Validate.Chinese( '我是中文' ) ); </script></p>
+                
+                <p>验证字符串是否全部由中文构成。</p>
+                
+                <pre> R.Validate.Chinese( '我是中文和 e 文' , true ); </pre>
+
+                <p> <script> document.write( R.Validate.Chinese( '我是中文和 e 文' , true ) ); </script></p>
+
+            </dd>
+            
+            <dt> R.Validate.Safe( string ) </dt>
+            <dd>
+
+                <p>验证对象是否为安全字符，即是否有特殊字符。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的字符串</p>
+                </blockquote>
+
+                <pre> R.Validate.Safe( '[]' ); </pre>
+
+                <p> <script> document.write( R.Validate.Safe( '[]' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Email( string ) </dt>
+            <dd>
+
+                <p>验证对象是否为电子邮件地址。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的邮件地址</p>
+                </blockquote>
+
+                <pre> R.Validate.Email( 'example@domain.com' ); </pre>
+
+                <p> <script> document.write( R.Validate.Email( 'example@domain.com' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.URL( string ) </dt>
+            <dd>
+
+                <p>验证对象是否为 URL 资源。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的URL 资源</p>
+                </blockquote>
+
+                <pre> R.Validate.URL( 'http://example.domain.com' ); </pre>
+
+                <p> <script> document.write( R.Validate.URL( 'http://example.domain.com' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.IP( string ) </dt>
+            <dd>
+
+                <p>验证对象是否为 IP 地址。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的IP地址</p>
+                </blockquote>
+
+                <pre> R.Validate.IP( '127.0.0.1' ); </pre>
+
+                <p> <script> document.write( R.Validate.IP( '127.0.0.1' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.ID( string ) </dt>
+            <dd>
+
+                <p>验证字符串是否为身份证。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的身份证号码，支持15或18位</p>
+                </blockquote>
+
+                <pre> R.Validate.ID( '42112119801010X' ); </pre>
+
+                <p> <script> document.write( R.Validate.ID( '42112119801010X' ) ); </script></p>
+
+                <pre> R.Validate.ID( '421121198010104283' ); </pre>
+
+                <p> <script> document.write( R.Validate.ID( '421121198010104283' ) ); </script></p>
+
+            </dd>
+            
+            <dt> R.Validate.Password( string ) </dt>
+            <dd>
+
+                <p>验证对象是否为合法密码（6~20 位）。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的密码字符串</p>
+                </blockquote>
+
+                <pre> R.Validate.Password( '123456' ); </pre>
+
+                <p> <script> document.write( R.Validate.Password( '123456' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Color( string ) </dt>
+            <dd>
+
+                <p>验证对象是否为颜色。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的颜色字符串，16进制颜色</p>
+                </blockquote>
+
+                <pre> R.Validate.Color( '#AABBCC' ); </pre>
+
+                <p> <script> document.write( R.Validate.Color( '#AABBCC' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Phone( string ) </dt>
+            <dd>
+
+                <p>校验普通电话、传真号码：可以“+”开头，除数字外，可含有“-”。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的号码字符串</p>
+                </blockquote>
+
+                <pre> R.Validate.Phone( '6666888' ); </pre>
+
+                <p> <script> document.write( R.Validate.Phone( '6666888' ) ); </script></p>
+                
+                <pre> R.Validate.Phone( '0519-6666888' ); </pre>
+
+                <p> <script> document.write( R.Validate.Phone( '0519-6666888' ) ); </script></p>
+
+            </dd>
+
+            <dt> R.Validate.Mobile( string ) </dt>
+            <dd>
+
+                <p>校验手机号码：必须以数字开头，除数字外，可含有“-”。</p>
+
+                <blockquote>
+                    <p> <strong>string</strong>  需要验证的手机号码字符串</p>
+                </blockquote>
+
+                <pre> R.Validate.Mobile( '15066661234' ); </pre>
+
+                <p> <script> document.write( R.Validate.Mobile( '15066661234' ) ); </script></p>
+
+            </dd>
+
+        </dl>			
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+        <dl id="entry">
+
+            <dt> R.Event( event ) </dt>
+            <dd>				
+
+                <p>执行交互事件（event）处理操作。</p>
+
+                <blockquote>
+                    <p> <strong>event</strong>  event 对象</p>
+                </blockquote>
+                
+            </dd>
+
+            <dt> .stop( [type] ) </dt>
+            <dd>
+
+                <p>停止事件冒泡和浏览器默认行为。</p>
+                
+                <pre>R.Event( event ).stop();</pre>
+                
+                <blockquote>
+                    <p> <strong>type</strong> 需要停止的内容，1 仅停止冒泡，2 仅停止默认行为，默认为全部停止</p>
+                </blockquote>	
+
+                <p id="box">
+                    
+                    <button>正常冒泡</button>
+                    <button id="stop">停止冒泡</button>
+                    
+                    <strong id="msg"></strong>
+                </p>
+                
+                <script type="text/javascript">
+                R( "#box" ).bind( 'click' ,function( e ){ 
+                    R("#msg").html( R.random(10) ); 
+                });
+
+                R( "#stop" ).bind( 'click' ,function( e ){ 
+                    R.Event( e ).stop();
+                });
+                </script>	
+
+            </dd>
+
+            <dt> .mouse() </dt>
+            <dd>
+
+                <p>获取当前鼠标光标所在位置。</p>
+                
+                <pre>R.Event( event ).mouse();</pre>
+
+                <p id="mouse">
+                
+                <script type="text/javascript">
+                R( document ).bind( 'mousemove' ,function( e ){ 
+                    var pos = R.Event( e ).mouse();
+                    R("#mouse").html( "X: "+ pos.x + " Y: "+ pos.y ); 
+                });
+                </script>
+                
+                </p>
+
+            </dd>
+
+            <dt> .element() </dt>
+            <dd>
+
+                <p>获取发生事件的节点对象。</p>
+                
+                <pre>R.Event( event ).element();</pre>
+
+                <p>                    	
+                    <button id="btn_element">测试</button> 
+                    <strong id="element"></strong>
+                </p>
+                
+                <script type="text/javascript">
+                R( "#btn_element" ).bind( 'click' ,function( e ){ 
+                    R("#element").html( R.Event( e ).element().tagName ); 
+                });
+                </script>
+
+            </dd>
+
+            <dt> .target() </dt>
+            <dd>
+
+                <p>发生当前在处理的事件的节点。</p>
+                
+                <pre>R.Event( event ).target();</pre>
+
+                <p>                    	
+                    <button id="btn_target">测试</button> 
+                    <strong id="target"></strong>
+                </p>
+                
+                <script type="text/javascript">
+                R( "#btn_target" ).bind( 'click' ,function( index ,event ){ 
+                    R("#target").html( R.Event( event ).target().tagName ); 
+                });
+                </script>
+
+            </dd>
+
+            <dt> .keyboard( code, func ) </dt>
+            <dd>
+
+                <p>响应键盘事件。</p>
+                
+                <pre>R.Event( event ).keyboard();</pre>
+
+                <blockquote>
+                    <p> <strong>code</strong> keyCode 键盘码，-1 为响应全部按键</p>
+                    <p> <strong>func</strong> 回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+                
+                <blockquote>
+                    <p> <strong>event</strong> 当前 Event 事件</p>
+                    <p> <strong>code</strong> 当前按键码</p>
+                </blockquote>
+                
+                <p>                    	
+                    <input id="btn_keyboard" value="" /> 
+                    <strong id="keyboard"></strong>
+                </p>
+                
+                <script type="text/javascript">
+                R( "#btn_keyboard" ).bind( 'keydown' ,function( ele, index ,event ){
+                
+			R.Event( event ).keyboard( -1, function( e, code ){ R("#keyboard").html( "按键码："+code ); } );
+                    
+                });
+                </script>
+
+            </dd>
+
+        </dl>
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

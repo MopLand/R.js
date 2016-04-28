@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="res/packer/my.js" type="text/javascript"></script>
+<script src="res/packer/base2-load.js" type="text/javascript"></script>
+<script src="res/packer/Packer.js" type="text/javascript"></script>
+<script src="res/packer/Words.js" type="text/javascript"></script>
+<script src="res/packer/bindings.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+		
+		<article>
+        
+        <dl id="entry">		
+
+            <dt> Regex - JavaScript 正则在线测试工具 </dt>
+            <dd>
+            
+				<script>
+                    /**
+                     * Method 测试正则表达式函数
+                     * @param method 接收到的正则表达式类的方法
+                     */
+                    function check(method)
+                    {
+                        // 将用户输入的正则表达式的标志转换为小写
+                        document.getElementById('flags').value = document.getElementById('flags').value.toLowerCase();
+                        
+                        // 如果含有不是g、i、m的字符, 则 提示并返回
+                        if ( document.getElementById('flags').value.search(/[^g|i|m]/g) != -1 )
+                        {
+                                alert("flags only can be g, i, m");
+                                return;
+                        }
+                        
+                        // 利用用户输入的字符串和标志建立正则表达式
+                        var re = new RegExp(document.getElementById('regex').value, document.getElementById('flags').value);
+                        
+                        // 获得并显示生成的正则表达式的字符串形式
+                        destRegex.innerText = re.toString() + ' ';
+                        
+                        // 定义 返回值
+                        var cr;
+                        
+                        ex = "new RegExp('" + document.getElementById('regex').value + "', '" + document.getElementById('flags').value + "').";
+                        
+                        // 根据用户选择的方法, 进行相应的调用
+                        switch ( method )
+                        {
+                                case '0': // 正则表达式的 exec 方法
+                                        cr = re.exec(document.getElementById('string').value);
+                                        ex = ex + "exec('" + document.getElementById('string').value + "')";
+                                        break;
+                                case '1': // 正则表达式的 test 方法
+                                        cr = re.test(document.getElementById('string').value);
+                                        ex = ex + "test('" + document.getElementById('string').value + "')";
+                                        break;
+                                case '2': // 字符串类的 match 方法
+                                        cr = document.getElementById('string').value.match(re);
+                                        ex = "'" + document.getElementById('string').value + "'.match(" + re.toString() + ")";
+                                        break;
+                                case '3': // 字符串类的 search 方法
+                                        cr = document.getElementById('string').value.search(re);
+                                        ex = "'" + document.getElementById('string').value + "'.search(" + re.toString() + ")";
+                                        break;
+                                case '4': // 字符串类的 replace 方法
+                                        cr = document.getElementById('string').value.replace(re);
+                                        ex = "'" + document.getElementById('string').value + "'.replace(" + re.toString() +")";
+                                        break;
+                                case '5': // 字符串类的 split 方法
+                                        cr = document.getElementById('string').value.split(re);
+                                        ex = "'" + document.getElementById('string').value + "'.split(" + re.toString() + ")";
+                                        break;
+                        }
+                        // 获得并显示表达式
+                        expression.innerText = ex;
+                        
+                        // 获得并显示计算结果的类型
+                        returnType.innerText = typeof(cr);
+                        
+                        // 定义结果
+                        var result = '';
+
+                        if ( cr != null && typeof(cr) == 'object' && cr.length != null ) // 如果计算结果是一个数组, 则取出所有数组的值
+                        {
+                                for ( i = 0; i < cr.length; i++ )
+                                {
+                                        result += "array[" + i + "] = '" + cr[i] + "'\n";
+                                }
+
+                        }
+                        else if ( cr != null ) // 如果计算结果不为null, 则取出计算结果的值
+                        {
+                                result = cr;
+                        }       
+
+                        // 获得并显示结果
+                        matchResult.innerText = result + ' ';
+                        
+                        // 获得并显示正则表达式的lastIndex属性
+                        lastIndex.innerText = re.lastIndex + ' ';
+                    }
+
+                    </script>
+
+                <table>
+                  <tbody>
+                  <tr>
+                    <td width="100">表达式:</td>
+                    <td><textarea style="WIDTH: 98%; HEIGHT: 80px" name="regex" id="regex">\[color=(.[^\[]*)\](.[^\[]*)\[\/color\]</textarea></td></tr>
+                  <tr>
+                    <td>测试选项:</td>
+                    <td><input id="flags" value="gim" name="flags" />
+                    	<ul> 
+                      <li>g（全局搜索出现的所有 pattern）                      </li>
+                      <li>i（忽略大小写）                      </li>
+                      <li>m（多行搜索） </li>
+                      </ul>
+                  </td></tr>
+                  <tr>
+                    <td>测试字符:</td>
+                    <td><textarea style="WIDTH: 98%; HEIGHT: 80px" name="string" id="string">[color=#ffffff]黑色[/color]进行匹配的正则表达式[sdfo][/color]</textarea> 
+                    </td></tr>
+                  <tr>
+                    <td>测试方法:</td>
+                    <td><select onchange="check(this.value)" name="select" id="select"> <option 
+                        value="0" selected="selected">exec</option> <option value="1">test</option> <option 
+                        value="2">match</option> <option value="3">search</option> <option 
+                        value="4">replace</option> <option value="5">split</option></select>
+                        <button onclick="check(document.getElementById('select').value)" type="button" name="Submit">运 行</button>
+                    </td></tr>
+                  <tr>
+                    <td>目标正则:</td>
+                    <td id="destRegex" style="COLOR: blue">&nbsp;</td></tr>
+                  <tr>
+                    <td>目标语句:</td>
+                    <td id="expression" style="COLOR: blue">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>返回类型:</td>
+                    <td id="returnType" style="COLOR: darkred">&nbsp;</td></tr>
+                  <tr>
+                    <td>结果:</td>
+                    <td id="matchResult" style="COLOR: red">&nbsp;</td></tr>
+                  <tr>
+                    <td>最后索引:</td>
+                    <td id="lastIndex" style="COLOR: red">&nbsp;</td></tr>
+                  </tbody></table>							
+
+            </dd>
+            
+            <dt> 正则表达式语法 </dt>
+            <dd>
+
+              <p>一个正则表达式就是由普通字符（例如字符 a 到 z）以及特殊字符（称为<i>元字符</i>）组成的文字模式。该模式描述在查找文字主体时待匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。</p>
+              <p>这里有一些可能会遇到的正则表达式示例：</p>
+              <table>
+                <tbody>
+                <tr valign="top">
+                <th width="20%">JScript</th>
+                <th width="20%">VBScript</th>
+                <th>匹配</th></tr>
+                <tr valign="top">
+                <td>/^\[ \t]*$/</td>
+                <td>&quot;^\[ \t]*$&quot;</td>
+                <td>匹配一个空白行。</td></tr>
+                <tr valign="top">
+                <td>/\d{2}-\d{5}/</td>
+                <td>&quot;\d{2}-\d{5}&quot;</td>
+                <td>验证一个ID 号码是否由一个2位数字，一个连字符以及一个5位数字组成。</td></tr>
+                <tr valign="top">
+                <td>/&lt;(.*)&gt;.*&lt;\/\1&gt;/</td>
+                <td>&quot;&lt;(.*)&gt;.*&lt;\/\1&gt;&quot;</td>
+              <td>匹配一个 HTML 标记。</td></tr></tbody></table><br />
+              <p>下表是元字符及其在正则表达式上下文中的行为的一个完整列表：</p>
+              <table>
+                <tbody>
+                <tr valign="top">
+                <th width="16%">字符</th>
+                <th width="84%">描述</th></tr>
+                <tr valign="top">
+                <td width="16%">\</td>
+                <td width="84%">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 后向引用、或一个八进制转义符。例如，'n' 匹配字符 &quot;n&quot;。'\n' 匹配一个换行符。序列 '\\' 匹配 &quot;\&quot; 而 &quot;\(&quot; 则匹配 &quot;(&quot;。</td></tr>
+                <tr valign="top">
+                <td width="16%">^</td>
+                <td width="84%">匹配输入字符串的开始位置。如果设置了 <b>RegExp</b> 对象的 <b>Multiline</b> 属性，^ 也匹配 '\n' 或 '\r' 之后的位置。</td></tr>
+                <tr valign="top">
+                <td width="16%">$</td>
+                <td width="84%">匹配输入字符串的结束位置。如果设置了<b>RegExp</b> 对象的 <b>Multiline</b> 属性，$ 也匹配 '\n' 或 '\r' 之前的位置。</td></tr>
+                <tr valign="top">
+                <td width="16%">*</td>
+                <td width="84%">匹配前面的子表达式零次或多次。例如，zo* 能匹配 &quot;z&quot; 以及 &quot;zoo&quot;。 * 等价于{0,}。</td></tr>
+                <tr valign="top">
+                <td width="16%">+</td>
+                <td width="84%">匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 &quot;zo&quot; 以及 &quot;zoo&quot;，但不能匹配 &quot;z&quot;。+ 等价于 {1,}。</td></tr>
+                <tr valign="top">
+                <td width="16%">?</td>
+                <td width="84%">匹配前面的子表达式零次或一次。例如，&quot;do(es)?&quot; 可以匹配 &quot;do&quot; 或 &quot;does&quot; 中的&quot;do&quot; 。? 等价于 {0,1}。</td></tr>
+                <tr valign="top">
+                <td width="16%">{<i>n</i>}</td>
+                <td width="84%"><i>n</i> 是一个非负整数。匹配确定的 <i>n</i> 次。例如，'o{2}' 不能匹配 &quot;Bob&quot; 中的 'o'，但是能匹配 &quot;food&quot; 中的两个 o。</td></tr>
+                <tr valign="top">
+                <td width="16%">{<i>n</i>,}</td>
+                <td width="84%"><i>n</i> 是一个非负整数。至少匹配<i>n</i> 次。例如，'o{2,}' 不能匹配 &quot;Bob&quot; 中的 'o'，但能匹配 &quot;foooood&quot; 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o*'。</td></tr>
+                <tr valign="top">
+                <td width="16%">{<i>n</i>,<i>m</i>}</td>
+                <td width="84%"><i>m</i> 和 <i>n</i> 均为非负整数，其中<i>n</i> &lt;= <i>m</i>。最少匹配 <i>n</i> 次且最多匹配 <i>m</i> 次。刘， &quot;o{1,3}&quot; 将匹配 &quot;fooooood&quot; 中的前三个 o。'o{0,1}' 等价于 'o?'。请注意在逗号和两个数之间不能有空格。</td></tr>
+                <tr valign="top">
+                <td width="16%">?</td>
+                <td width="84%">当该字符紧跟在任何一个其他限制符 (*, +, ?, {<i>n</i>}, {<i>n</i>,}, {<i>n</i>,<i>m</i>}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 &quot;oooo&quot;，'o+?' 将匹配单个 &quot;o&quot;，而 'o+' 将匹配所有 'o'。</td></tr>
+                <tr valign="top">
+                <td width="16%">.</td>
+                <td width="84%">匹配除 &quot;\n&quot; 之外的任何单个字符。要匹配包括 '\n' 在内的任何字符，请使用象 '[.\n]' 的模式。</td></tr>
+                <tr valign="top">
+                <td width="16%">(<i>pattern</i>)</td>
+                <td width="84%">匹配<i>pattern</i> 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 <b>SubMatches</b> 集合，在JScript 中则使用 <b>$0</b>…<b>$9</b> 属性。要匹配圆括号字符，请使用 '\(' 或 '\)'。</td></tr>
+                <tr valign="top">
+                <td width="16%">(?:<i>pattern</i>)</td>
+                <td width="84%">匹配 <i>pattern</i> 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 &quot;或&quot; 字符 (|) 来组合一个模式的各个部分是很有用。例如， 'industr(?:y|ies) 就是一个比 'industry|industries' 更简略的表达式。</td></tr>
+                <tr valign="top">
+                <td width="16%">(?=<i>pattern</i>)</td>
+                <td width="84%">正向预查，在任何匹配 <i>pattern</i> 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如， 'Windows (?=95|98|NT|2000)' 能匹配 &quot;Windows 2000&quot; 中的 &quot;Windows&quot; ，但不能匹配 &quot;Windows 3.1&quot; 中的 &quot;Windows&quot;。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td></tr>
+                <tr valign="top">
+                <td width="16%">(?!<i>pattern</i>)</td>
+                <td width="84%">负向预查，在任何不匹配Negative lookahead matches the search string at any point where a string not matching <i>pattern</i> 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如'Windows (?!95|98|NT|2000)' 能匹配 &quot;Windows 3.1&quot; 中的 &quot;Windows&quot;，但不能匹配 &quot;Windows 2000&quot; 中的 &quot;Windows&quot;。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始 </td></tr>
+                <tr valign="top">
+                <td width="16%"><i>x</i>|<i>y</i></td>
+                <td width="84%">匹配 <i>x</i> 或 <i>y</i>。例如，'z|food' 能匹配 &quot;z&quot; 或 &quot;food&quot;。'(z|f)ood' 则匹配 &quot;zood&quot; 或 &quot;food&quot;。 </td></tr>
+                <tr valign="top">
+                <td width="16%">[<i>xyz</i>]</td>
+                <td width="84%">字符集合。匹配所包含的任意一个字符。例如， '[abc]' 可以匹配 &quot;plain&quot; 中的 'a'。 </td></tr>
+                <tr valign="top">
+                <td width="16%">[^<i>xyz</i>]</td>
+                <td width="84%">负值字符集合。匹配未包含的任意字符。例如， '[^abc]' 可以匹配 &quot;plain&quot; 中的'p'。 </td></tr>
+                <tr valign="top">
+                <td width="16%">[<i>a-z</i>]</td>
+                <td width="84%">字符范围。匹配指定范围内的任意字符。例如，'[a-z]' 可以匹配 'a' 到 'z' 范围内的任意小写字母字符。 </td></tr>
+                <tr valign="top">
+                <td width="16%">[^<i>a-z</i>]</td>
+                <td width="84%">负值字符范围。匹配任何不在指定范围内的任意字符。例如，'[^a-z]' 可以匹配任何不在 'a' 到 'z' 范围内的任意字符。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\b</td>
+                <td width="84%">匹配一个单词边界，也就是指单词和空格间的位置。例如， 'er\b' 可以匹配&quot;never&quot; 中的 'er'，但不能匹配 &quot;verb&quot; 中的 'er'。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\B</td>
+                <td width="84%">匹配非单词边界。'er\B' 能匹配 &quot;verb&quot; 中的 'er'，但不能匹配 &quot;never&quot; 中的 'er'。</td></tr>
+                <tr valign="top">
+                <td width="16%">\c<i>x</i></td>
+                <td width="84%">匹配由<i>x</i>指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。 <i>x</i> 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 'c' 字符。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\d</td>
+                <td width="84%">匹配一个数字字符。等价于 [0-9]。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\D</td>
+                <td width="84%">匹配一个非数字字符。等价于 [^0-9]。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\f</td>
+                <td width="84%">匹配一个换页符。等价于 \x0c 和 \cL。</td></tr>
+                <tr valign="top">
+                <td width="16%">\n</td>
+                <td width="84%">匹配一个换行符。等价于 \x0a 和 \cJ。</td></tr>
+                <tr valign="top">
+                <td width="16%">\r</td>
+                <td width="84%">匹配一个回车符。等价于 \x0d 和 \cM。</td></tr>
+                <tr valign="top">
+                <td width="16%">\s</td>
+                <td width="84%">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [&nbsp;\f\n\r\t\v]。</td></tr>
+                <tr valign="top">
+                <td width="16%">\S</td>
+                <td width="84%">匹配任何非空白字符。等价于 [^&nbsp;\f\n\r\t\v]。</td></tr>
+                <tr valign="top">
+                <td width="16%">\t</td>
+                <td width="84%">匹配一个制表符。等价于 \x09 和 \cI。</td></tr>
+                <tr valign="top">
+                <td width="16%">\v</td>
+                <td width="84%">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td></tr>
+                <tr valign="top">
+                <td width="16%">\w</td>
+                <td width="84%">匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]'。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\W</td>
+                <td width="84%">匹配任何非单词字符。等价于 '[^A-Za-z0-9_]'。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\x<i>n</i></td>
+                <td width="84%">匹配 <i>n</i>，其中 <i>n</i> 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如， '\x41' 匹配 &quot;A&quot;。'\x041' 则等价于 '\x04' &amp; &quot;1&quot;。正则表达式中可以使用 ASCII 编码。.</td></tr>
+                <tr valign="top">
+                <td width="16%">\<i>num</i></td>
+                <td width="84%">匹配 <i>num</i>，其中 <i>num</i> 是一个正整数。对所获取的匹配的引用。例如，'(.)\1' 匹配两个连续的相同字符。 </td></tr>
+                <tr valign="top">
+                <td width="16%">\<i>n</i></td>
+                <td width="84%">标识一个八进制转义值或一个后向引用。如果 \<i>n</i> 之前至少 <i>n</i> 个获取的子表达式，则 <i>n</i> 为后向引用。否则，如果 <i>n</i> 为八进制数字 (0-7)，则 <i>n</i> 为一个八进制转义值。</td></tr>
+                <tr valign="top">
+                <td width="16%">\<i>nm</i></td>
+                <td width="84%">标识一个八进制转义值或一个后向引用。如果 \<i>nm</i> 之前至少有is preceded by at least <i>nm</i> 个获取得子表达式，则 <i>nm</i> 为后向引用。如果 \<i>nm</i> 之前至少有 <i>n</i> 个获取，则 <i>n</i> 为一个后跟文字 <i>m </i>的后向引用。如果前面的条件都不满足，若&nbsp; <i>n</i> 和 <i>m</i> 均为八进制数字 (0-7)，则 \<i>nm</i> 将匹配八进制转义值 <i>nm</i>。</td></tr>
+                <tr valign="top">
+                <td width="16%">\<i>nml</i></td>
+                <td width="84%">如果 <i>n</i> 为八进制数字 (0-3)，且 <i>m</i> 和 <i>l</i> 均为八进制数字 (0-7)，则匹配八进制转义值 <i>nml。</i></td></tr>
+                <tr valign="top">
+                <td width="16%">\u<i>n</i></td>
+              <td width="84%">匹配 <i>n</i>，其中 <i>n</i> 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td></tr></tbody>
+              </table>			
+
+            </dd>
+            
+            <dt> Adsense </dt>
+            <dd>
+
+                <p style="text-align:center;">
+                    <script type="text/javascript"><!--
+                    google_ad_client = "pub-7104481011578148";
+                    /* 728x90, 创建于 11-1-10 */
+                    google_ad_slot = "6989394160";
+                    google_ad_width = 728;
+                    google_ad_height = 90;
+                    //-->
+                    </script>
+                    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+                </p>
+
+            </dd>
+
+        </dl>
+		</article>
+    
+    </div>
+    
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+    
+</body>
+</html>

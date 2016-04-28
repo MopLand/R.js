@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+
+        <dl id="entry">
+
+            <dt> R.Date( datetime ) </dt>
+            <dd>				
+
+                <p>执行日期时间处理操作。</p>
+
+                <blockquote>
+                    <p> <strong>datetime</strong>  日期时间对象或时间戳，默认为当前日期时间</p>
+                </blockquote>
+                
+            </dd>
+
+            <dt> .time() </dt>
+            <dd>
+
+                <p>获取现在的Unix时间戳。</p>
+
+                <pre>R.Date( datetime ).time();</pre>
+
+                <p id="time"></p>
+                
+                <script type="text/javascript"> window.setInterval( function(){ R("#time").html( R.Date().time() ); }, 1000 ) </script>
+
+            </dd>
+            
+            <dt> .leapyear() </dt>
+            <dd>
+
+                <p>判断是否是闰年,返回 true 或者 false。</p>
+
+                <pre>R.Date( datetime ).leapyear();</pre>
+
+                <script type="text/javascript"> document.write( R.Date().leapyear() ); </script>
+
+            </dd>
+            
+            <dt> .days() </dt>
+            <dd>
+
+                <p>返回月天数。</p>
+
+                <pre>R.Date( datetime ).days();</pre>
+
+                <script type="text/javascript"> document.write( R.Date().days() ); </script>
+
+                <p>返回2016年2月天数。</p>
+
+                <pre>R.Date( 1328029261 ).days();</pre>
+
+                <script type="text/javascript"> document.write( R.Date( 1328029261 ).days() ); </script>
+
+            </dd>
+			
+			<dt> .format( format[, datetime] ) </dt>
+            <dd>
+
+                <p>返回格式化后的日期。</p>
+
+                <blockquote>
+                    <p> <strong>format</strong>  字符串形式</p>
+                    <p> <strong>datetime</strong>  时间对象，默认为当前时间</p>
+                </blockquote>
+                
+                <p>format 取值参考，以 2016/9/6 2:1:5 为例</p>
+                
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="25%">属性：</td>
+                        <td width="25%">值：</td>
+                        <td width="25%">属性：</td>
+                        <td width="25%">值：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+						<td>yy</td>
+						<td>完整年份，如：2016</td>
+						<td>y</td>
+						<td>短年份，如：11</td>
+                    </tr>
+                    <tr>
+						<td>mm</td>
+						<td>完整月份，如：09</td>
+						<td>m</td>
+						<td>短月份，如：9</td>
+                    </tr>
+                    <tr>
+						<td>dd</td>
+						<td>完整日期，如：06</td>
+						<td>d</td>
+						<td>短日期，如：6</td>
+                    </tr>
+                    <tr>
+						<td>hh</td>
+						<td>完整小时，如：02</td>
+						<td>h</td>
+						<td>短小时，如：2</td>
+                    </tr>
+                    <tr>
+						<td>ii</td>
+						<td>完整分钟，如：01</td>
+						<td>i</td>
+						<td>短分钟，如：1</td>
+                    </tr>
+                    <tr>
+						<td>ss</td>
+						<td>完整秒钟，如：05</td>
+						<td>s</td>
+						<td>短秒钟，如：5</td>
+                    </tr>
+                </table>
+
+<pre>document.write( R.date("y-m-d") );</pre>
+
+                <p>
+                    <script>document.write( R.date("y-m-d") );</script>
+                </p>
+
+                <pre>document.write( R.date( "y-m-d", 1328029261 ) );</pre>
+
+                <p>
+                    <script>document.write( R.date( "y-m-d", 1328029261 ) );</script>
+                </p>
+
+            </dd>
+			
+			<dt> .diff( expire[, func] ) </dt>
+            <dd>
+
+                <p>倒计时。</p>
+
+                <blockquote>
+                    <p> <strong>expire</strong>  过期时间,Unix 时间戳（秒）</p>
+                    <p> <strong>func</strong>  函数名称或匿名函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>diff</strong>  -1 为已过期，否则为相差的秒数</p>
+                    <p> <strong>date</strong>  返回相差的时间值，JSON 对象，{ "d":"天", "h":"小时", "m":"分", "s":"秒" }</p>
+                </blockquote>
+
+                <pre>R.DateDiff();</pre>
+
+                <p id="down">
+                <script>                
+                R.DateDiff( ( R.Date().time()+ ( 3600 * 24 * 30 ) ) , function( result, date ){ 
+                        R("#down").html( result + '秒 - 共计' + date["d"]+"天"+date["h"]+"小时"+date["m"]+"分钟"+date["s"]+"秒" ); 
+                });
+                </script>
+                </p>
+
+            </dd>
+
+        </dl>
+		</article>
+
+    </div>	
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

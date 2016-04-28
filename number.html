@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+		
+		<article>
+
+        <dl id="entry">
+
+            <dt> R.Number("...") </dt>
+            <dd>
+
+                <p>执行数值处理操作。</p>
+
+            </dd>
+
+            <dt> R.Number("...").exist() </dt>
+            <dd>
+
+                <p>暂无。</p>
+
+            </dd>
+            
+            <dt> .comma() </dt>
+            <dd>
+
+                <p>使用逗号分隔数字串。</p>
+                
+                <blockquote>
+                    <p> <strong>length</strong> 分组长度 </p>
+                </blockquote>
+
+                <pre>R.Number( 1999999 ).comma( 3 );</pre>
+
+                <p><script>document.write( R.Number( 1999999 ).comma( 3 ) );</script></p>
+
+            </dd>
+
+            <dt> .between( min, max ) </dt>
+            <dd>
+
+                <p>产生一个指定范围的随机数值。</p>
+
+                <blockquote>
+                    <p> <strong>min</strong>  最小整数值</p>
+                    <p> <strong>max</strong>  最大整数值</p>
+                </blockquote>
+                
+                <pre>R.between(40,100);</pre>
+
+                <p><button type="button" id="between">测试</button> <span id="between_box"></span> </p>
+
+            </dd>
+
+        </dl>
+        
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>

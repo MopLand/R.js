@@ -1,0 +1,978 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+		<header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+
+        <dl id="entry">
+
+            <dt> R( selector[, context] ) </dt>
+            <dd>
+                <p>页面元素对象，通常用 ID、name、class 等属性匹配。</p>
+
+                <blockquote>
+                    <p> <strong>selector</strong>  选择器表达式或 Element 对象 </p>
+                    <p> <strong>context</strong>  基准对象，默认为 document</p>
+                </blockquote>
+
+                <pre>R("#example");</pre>
+
+                <p>
+                    支持以下 CSS 选择器：
+                </p>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="30%">选择器：</td>
+                        <td>含义：</td>
+                        <td width="30%">选择器：</td>
+                        <td>含义：</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            tag
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>tag &gt; .className</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        tag &gt; tag</td>
+                        <td>&nbsp;</td>
+                        <td>#id &gt; tag.className</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                          .className tag
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>tag, tag, #id</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                          tag#id.className
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>.className</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        span &gt; * &gt; b</td>
+                        <td>&nbsp;</td>
+                        <td>input[name=password]</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>input[name='config[theme]']</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                </table>
+
+                <p>
+                    <em>
+                    <strong>注意：</strong>此处元素对象为 Mo 对象，并不能像 DOM 对象一样直接操作和访问，如有需要，请使用 .item() 和 .each() 来转换成 DOM 对象。
+                    </em>
+                </p>
+
+            </dd>
+
+            <dt> .isOnDom( node ) </dt>
+            <dd>
+
+                <p>判断目标节点是否存在于 DOM 中。</p>
+                
+                <blockquote>
+                    <p> <strong>node</strong> 节点对象</p>
+                </blockquote>
+                
+                <pre>R.isOnDom( document.body );</pre>
+
+                <p>                
+                <script type="text/javascript">
+                document.write( R.isOnDom( document.body ) );
+                </script>                
+                </p>
+
+            </dd>
+
+            <dt> .contains( a, b ) </dt>
+            <dd>
+
+                <p>检测 b 节点是否包含在于 a 元素中。</p>
+                
+                <blockquote>
+                    <p> <strong>a</strong> 节点对象</p>
+                    <p> <strong>b</strong> 节点对象</p>
+                </blockquote>
+                
+                <pre>R.contains( document.body, R.$('wrapper') );</pre>
+                
+                <script type="text/javascript">
+                document.write( R.contains( document.body, R.$('wrapper') ) );
+                </script>
+
+            </dd>
+
+            <dt> .size() </dt>
+            <dd>
+
+                <p>返回元素数量，如果没有则返回 0</p>
+
+                <pre>R("#example").size();</pre>
+
+                <p><script> document.write( R("#example").size() );</script></p>
+
+            </dd>
+
+            <dt> .item( index[, self] ) </dt>
+            <dd>
+
+                <p>返回指定位置元素 DOM，如果没有则返回 null</p>
+
+                <blockquote>
+                    <p> <strong>index</strong>  元素索引，从 0 开始计数，可以使用负数来倒序获取</p>
+                    <p> <strong>self</strong>  [可选]是否将当前元素置为所选元素，默认为 false</p>
+                </blockquote>
+
+                <pre>R("#example").item( 0 );</pre>
+
+                <p><script> document.write( R("#example").item( 0 ) );</script></p>
+
+                <p id="item">使用负数（-），从尾至首（倒序）返回指定位置元素</p>
+
+                <pre>R("*").item( -4 );</pre>
+
+                <p><script> document.write( R("*").item( -4 ).id );</script></p>
+
+            </dd>
+
+            <dt> .hide( [func] ) </dt>
+            <dd>
+
+                <p>将元素隐藏，并且可以设置回调事件</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                </blockquote>
+
+                <pre>R("#example").hide();</pre>
+
+                <p><button type="button" id="btn_hide">测试</button></p>
+
+                <p id="hide">
+                    我叫 R.js ，你可以称呼我为小 Mo。
+                </p>
+
+            </dd>
+
+            <dt> .show( [func] ) </dt>
+            <dd>
+
+                <p>将元素显示，并且可以设置回调事件</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                </blockquote>
+
+                <pre>R("#example").show();</pre>
+
+                <p><button type="button" id="btn_show">测试</button></p>
+
+                <p id="show" style="display:none;">
+                    我叫 R.js ，你可以称呼我为小 Mo。
+                </p>
+
+            </dd>
+
+            <dt> .toggle( [func] ) </dt>
+            <dd>
+
+                <p>显示或隐藏元素。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                    <p> <strong>res</strong>  当前元素对象是否可见，true 或 false</p>
+                </blockquote>
+
+                <pre>R("#example").toggle();</pre>
+
+                <p><button type="button" id="btn_toggle">测试</button></p>
+
+                <div id="toggle">我叫 R.js ，你可以称呼我为小 Mo。</div>
+
+            </dd>
+
+            <dt> .value() </dt>
+            <dd>
+
+                <p>返回元素的值，仅针对表单元素：input | radio | checkbox | button | file | select | textarea</p>
+
+                <pre>R("#example").value();</pre>
+
+                <p><input id="bind_value" value="R.js" /> <button type="button" id="btn_value">测试</button></p>
+
+                <div id="read"></div>
+
+                <pre>R("input[name=multi]").value();</pre>
+
+                <p><input name="multi" value="R.js"/> <input name="multi" value="JavaScript" /> <button type="button" id="btn_multi">测试</button></p>
+
+                <div id="multi"></div>
+
+                <pre>R("input[name=chkbox]").value();</pre>
+
+                <p>A <input name="chkbox" type="checkbox" class="checkbox" value="A" />
+                            B <input name="chkbox" type="checkbox" class="checkbox" value="B" />
+                            C <input name="chkbox" type="checkbox" class="checkbox" value="C" /> <button type="button" id="btn_checkbox">测试</button></p>
+
+                <div id="checkbox"></div>
+
+            </dd>
+
+            <dt> .value( text[, add] ) </dt>
+            <dd>
+
+                <p>设置元素的值，仅针对表单元素：input | button | select | textarea</p>
+
+                <blockquote>
+                    <p> <strong>text</strong>  字符串（checkbox 和 radio 支持数组）</p>
+                    <p> <strong>add</strong>  [可选]是否在原字符串上追加</p>
+                </blockquote>
+
+                <pre>R("#example").value( 'Hello!');</pre>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="50%">text</td>
+                        <td>hidden</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <input id="text" value="" />
+                        </td>
+                        <td>
+                            <input id="hidden" value="" />
+                        </td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <td>radio</td>
+                        <td>checkbox</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            A <input name="radio" type="radio" class="radio" value="A" />
+                            B <input name="radio" type="radio" class="radio" value="B" />
+                            C <input name="radio" type="radio" class="radio" value="C" />
+                        </td>
+                        <td>
+                            A <input name="checkbox" type="checkbox" class="checkbox" value="A" />
+                            B <input name="checkbox" type="checkbox" class="checkbox" value="B" />
+                            C <input name="checkbox" type="checkbox" class="checkbox" value="C" />
+                        </td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <td>textarea
+                        </td>
+                        <td>select</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <textarea id="textarea">xxx</textarea>
+                        </td>
+                        <td>
+                            <select id="select">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <thead>
+                    <tr>
+                        <td>select multiple</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <select id="multiple" multiple="multiple">
+                                <option value="A" selected="selected">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt> .text() </dt>
+            <dd>
+
+                <p>返回选中元素的文本，仅针对表单元素：select</p>
+
+                <pre>R("#example").text();</pre>
+
+                <p>
+                <select name="text">
+                    <option value="A">A+</option>
+                    <option value="B" selected="selected">B+</option>
+                    <option value="C">C+</option>
+                </select>
+                </p>
+
+                <p>
+                    <script>document.write( R("select[name=text]").text() );</script>
+                </p>
+
+            </dd>
+
+            <dt> .text( text[, replace] ) </dt>
+            <dd>
+
+                <p>设置选中元素的文本，仅针对表单元素：select</p>
+
+                <blockquote>
+                    <p> <strong>text</strong>  字符串</p>
+                    <p> <strong>replace</strong>  [可选]新的文本</p>
+                </blockquote>
+
+                <pre>R("#example").text( 'C+' );</pre>
+
+                <p>
+                <select name="text-two">
+                    <option value="A">A+</option>
+                    <option value="B">B+</option>
+                    <option value="C">C+</option>
+                </select>
+                </p>
+
+                <pre>R("#example").text( 'C+', 'D+' );</pre>
+
+                <p><button type="button" id="btn_text">测试</button></p>
+
+            </dd>
+
+            <dt> .html( ) </dt>
+            <dd>
+
+                <p>返回元素的 HTML 代码片段。</p>
+
+                <pre>R("#example").html( );</pre>
+
+            </dd>
+
+            <dt> .html( html[, add] ) </dt>
+            <dd>
+
+                <p>设置或返回元素的 HTML 代码片段。</p>
+
+                <blockquote>
+                    <p> <strong>html</strong>  HTML 代码片段</p>
+                    <p> <strong>add</strong>  [可选]是否在原代码上追加</p>
+                </blockquote>
+
+                <pre>R("#example").html( '&lt;a href="http://www.veryide.com/"&gt;VeryIDE&lt;/a&gt;' );</pre>
+
+                <p><button type="button" id="btn_html">测试</button></p>
+
+                <p id="html">
+                    我叫 R.js ，你可以称呼我为小 Mo。
+                </p>
+
+            </dd>
+
+            <dt> .attr( attr ) </dt>
+            <dd>
+
+                <p>返回元素的属性信息，不存在则返回 null</p>
+
+                <blockquote>
+                    <p> <strong>attr</strong> 属性名称 </p>
+                </blockquote>
+
+                <pre>R("#example").attr( "width" );</pre>
+
+            </dd>
+
+            <dt> .attr( { key : val } ) </dt>
+            <dd>
+
+                <p>设置元素的属性信息</p>
+
+                <blockquote>
+                    <p> <strong>key</strong>  属性名称</p>
+                    <p> <strong>val</strong>  属性值</p>
+                </blockquote>
+
+                <pre>R("#example").attr( "width" , R.between( 100 , 200 ) );</pre>
+
+                <p><button type="button" id="btn_attr">测试</button> <span id="box_attr"></span></p>
+
+                <p>
+                    <img id="attr" width="200" src="res/images/wait.gif" />
+                </p>
+
+            </dd>
+
+            <dt> .style( attr ) </dt>
+            <dd>
+
+                <p>返回元素的 CSS 样式信息。</p>
+
+                <blockquote>
+                    <p> <strong>attr</strong>  属性名称</p>
+                </blockquote>
+
+                <pre>R("#example").style( "color" );</pre>
+
+            </dd>
+
+            <dt> .style( { key : val } ) </dt>
+            <dd>
+
+                <p>设置元素的 CSS 样式信息。</p>
+
+                <blockquote>
+                    <p> <strong>key</strong>  属性名称</p>
+                    <p> <strong>val</strong>  属性值</p>
+                </blockquote>
+
+                <pre>R("#example").style( { "color" : "red" } );</pre>
+
+                <p>请使用如下语法：</p>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <td width="50%">语法</td>
+                        <td width="50%">作用</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>color</td>
+                        <td>颜色</td>
+                    </tr>
+                    <tr>
+                        <td>backgroundImage</td>
+                        <td>背景图片</td>
+                    </tr>
+                    <tr>
+                        <td>fontSize</td>
+                        <td>字号</td>
+                    </tr>
+                    <tr>
+                        <td>zIndex</td>
+                        <td>深度</td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt> .position() </dt>
+            <dd>
+
+                <p>返回第一个元素的位置和尺寸信息。</p>
+
+                <pre>R("#example").position();</pre>
+
+                <p> <button type="button" id="btn_position">测试</button> </p>
+
+                <p id="position"> </p>
+
+            </dd>
+
+            <dt> .each( func ) </dt>
+            <dd>
+
+                <p>遍历元素，对每个元素执行回调函数。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  函数名称或匿名函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                    <p> <strong>index</strong>  当前元素索引值</p>
+                </blockquote>
+
+                <pre>R("#example").each( function( ele, index ){} );</pre>
+
+                <p>
+                    <em>
+                    <strong>注意：</strong>如果需要在执行过程中终止遍历，需要使用 return false;
+                    </em>
+                </p>
+
+                <pre>R("#example").each( function( ele, index ){
+
+        if( index == 2 ){
+            return false;
+        }
+
+} );</pre>
+
+            </dd>
+
+		    <dt> .prev( [self] ) </dt>
+		    <dd>
+
+				<p>访问上一个兄弟节点，并将其设置为当前节点。</p>
+
+				<blockquote>
+				    <p> <strong>self</strong>  [可选]是否将当前元素置为所选元素，默认为 false</p>
+				</blockquote>
+
+				<pre>R("#example").prev( true );</pre>
+
+			</dd>
+
+		    <dt> .next( [self] ) </dt>
+		    <dd>
+
+				<p>访问下一个兄弟节点，并将其设置为当前节点。</p>
+
+				<blockquote>
+				    <p> <strong>self</strong>  [可选]是否将当前元素置为所选元素，默认为 false</p>
+				</blockquote>
+
+				<pre>R("#example").prev( true );</pre>
+
+			</dd>
+
+		    <dt> .parent( level ) </dt>
+		    <dd>
+
+				<p>访问元素父节点，并将其设置为当前节点。</p>
+
+				<blockquote>
+				    <p> <strong>level</strong>  节点层次，默认为 1</p>
+				</blockquote>
+
+				<pre>R("#example").parent( 2 );</pre>
+
+				<p id="btn_parent"></p>
+
+		    </dd>
+
+		    <dt> .blur( func ) </dt>
+		    <dd>
+
+				<p>将当前元素失去焦点，并回调函数。</p>
+
+				<blockquote>
+				    <p> <strong>func</strong>  回调函数</p>
+				</blockquote>
+
+				<p>func 可接受参数</p>
+
+				<blockquote>
+				    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+				    <p> <strong>index</strong>  当前元素索引值</p>
+				</blockquote>
+
+				<pre>R("#example").blur();</pre>
+
+				<p> <input id="blur_box" name="" value="" tabindex="0" /> <button type="button" id="blur">测试</button> </p>
+
+		    </dd>
+
+	        <dt> .bind( event, func ) </dt>
+	        <dd>
+
+	            <p>为当前元素绑定指定的事件。</p>
+
+	            <blockquote>
+	                <p> <strong>event</strong>  事件名称</p>
+	                <p> <strong>func</strong>  函数名称或匿名函数</p>
+	            </blockquote>
+
+	            <p>func 可接受参数</p>
+
+	            <blockquote>
+	                <p> <strong>this</strong>  当前元素对象</p>
+	                <p> <strong>this.index</strong>  当前元素索引值</p>
+	                <p> <strong>event</strong>  event 对象</p>
+	            </blockquote>
+
+	            <pre>R("#example").bind( 'click',function(){ R("#bind_box").html("你点了我一下！"); } )</pre>
+
+	            <p> <button type="button" id="bind">测试</button> </p>
+
+	            <p id="bind_box">
+	                这里是操作的内容。
+	            </p>
+
+	        </dd>
+
+	        <dt> .unbind( event ) </dt>
+	        <dd>
+
+	            <p>取消当前元素指定事件的绑定。</p>
+
+	            <blockquote>
+	                <p> <strong>event</strong>  事件名称</p>
+	            </blockquote>
+
+	            <pre>R("#example").unbind();</pre>
+
+	            <p> <button type="button" id="unbind">测试</button> </p>
+
+	        </dd>
+
+            <dt> .event( event ) </dt>
+            <dd>
+
+                <p>模拟事件响应。</p>
+
+                <pre>R("#example").event('click');</pre>
+
+            </dd>
+
+            <dt> .submit( func ) </dt>
+            <dd>
+
+                <p>将当前表单提交，并在之行执行函数。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                    <p> <strong>index</strong>  当前元素索引值</p>
+                </blockquote>
+
+                <p>func 需返回参数</p>
+
+                <blockquote>
+                    <p> <strong>true</strong>  继续表单提交</p>
+                    <p> <strong>false</strong>  取消表单提交</p>
+                </blockquote>
+
+                <pre>R("#example").submit( function(){ return confirm( '确定要提交吗?' ); } );</pre>
+
+                <form id="form_submit">
+                <p> <input id="q" name="q" value="mo.js" /> <button type="button">测试</button> </p>
+                </form>
+
+            </dd>
+
+            <dt> .reset( func ) </dt>
+            <dd>
+
+                <p>将当前表单重置，并在之行执行函数。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                    <p> <strong>index</strong>  当前元素索引值</p>
+                </blockquote>
+
+                <p>func 需返回参数</p>
+
+                <blockquote>
+                    <p> <strong>true</strong>  继续表单重置</p>
+                    <p> <strong>false</strong>  取消表单重置</p>
+                </blockquote>
+
+                <pre>R("#example").reset( function(){ return confirm( '确定要重置吗?' ); } );</pre>
+
+				<form id="form_reset">
+                <p> <input id="q" name="q" value="mo.js" /> <button type="button">测试</button> </p>
+				</form>
+
+            </dd>
+
+            <dt> .focus( func ) </dt>
+            <dd>
+
+                <p>将当前元素设置焦点，并回调函数。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                    <p> <strong>index</strong>  当前元素索引值</p>
+                </blockquote>
+
+                <pre>R("#example").focus( function(){ R( this ).html( '光标在这里！' ); } );</pre>
+
+                <p> <input id="focus_box" name="" value="" /> <button type="button" id="focus">测试</button> </p>
+
+            </dd>
+
+            <dt> .blur( func ) </dt>
+            <dd>
+
+                <p>将当前元素失去焦点，并回调函数。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                    <p> <strong>index</strong>  当前元素索引值</p>
+                </blockquote>
+
+                <pre>R("#example").blur();</pre>
+
+                <p> <input id="blur_box" name="" value="" tabindex="0" /> <button type="button" id="blur">测试</button> </p>
+
+            </dd>
+
+            <dt> .disabled() </dt>
+            <dd>
+
+                <p>将当前元素禁用。</p>
+
+                <pre>R("#example").disabled();</pre>
+
+                <p> <button type="button" id="btn_disabled">测试</button> </p>
+
+                <p id="disabled">
+                    这里是操作的内容。
+                </p>
+
+                <p>
+                    <em>
+                    <strong>注意：</strong>在 Webkit 为核心的浏览器中，.disabled() 容器并不会影响子元素，如有必要请使用 R("#example *").disabled(); 来实现 。
+                    </em>
+                </p>
+
+            </dd>
+
+            <dt> .enabled() </dt>
+            <dd>
+
+                <p>将当前元素启用。</p>
+
+                <pre>R("#example").enabled();</pre>
+
+                <p> <button type="button" id="btn_enabled">测试</button> </p>
+
+                <p id="enabled" disabled="true">
+                    这里是操作的内容。
+                </p>
+
+                <p>
+                    <em>
+                    <strong>注意：</strong>在 Webkit 为核心的浏览器中，.enabled() 容器并不会影响子元素，如有必要请使用 R("#example *").enabled(); 来实现 。
+                    </em>
+                </p>
+
+            </dd>
+
+            <dt> .checked( [boolean] ) </dt>
+            <dd>
+
+                <p>选中或取消选中当前元素，本方法只针对 checkbox 元素有效。</p>
+
+                <blockquote>
+                    <p> <strong>boolean</strong> 布尔值，true 或 false，为空时为反选</p>
+                </blockquote>
+
+                <pre>R("input[type=checkbox]").checked( true );</pre>
+
+                <p> <button type="button" id="btn_checked_all">全选</button> </p>
+
+                <pre>R("input[type=checkbox]").checked( false );</pre>
+
+                <p> <button type="button" id="btn_checked_un">不选</button> </p>
+
+                <pre>R("input[type=checkbox]").checked();</pre>
+
+                <p> <button type="button" id="btn_checked_anti">反选</button> </p>
+
+                <p id="checked">
+                    <input name="checkbox" type="checkbox" class="checkbox" /> A
+                    <input name="checkbox" type="checkbox" class="checkbox" /> B
+                    <input name="checkbox" type="checkbox" class="checkbox" /> C
+                    <input name="checkbox" type="checkbox" class="checkbox" /> C
+                    <input name="checkbox" type="checkbox" class="checkbox" /> D
+                    <input name="checkbox" type="checkbox" class="checkbox" /> E
+                </p>
+
+            </dd>
+
+            <dt> .create( tag[, attr, self] ) </dt>
+            <dd>
+
+                <p>在当前元素上创建子元素。</p>
+
+                <blockquote>
+                    <p> <strong>tag</strong>  标签名称</p>
+                    <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                    <p> <strong>self</strong>  [可选]是否将当前元素置为所选元素，默认为 false</p>
+                </blockquote>
+
+                <pre>R("#example").create( "strong" , { "innerHTML" : "我是刚创建的 strong 标签。", "data-test" : "strong" } );</pre>
+
+                <p> <button type="button" id="btn_create">测试</button> </p>
+
+                <p id="create"></p>
+
+            </dd>
+
+            <dt> .insert( tag[, attr, self] ) </dt>
+            <dd>
+
+                <p>在当前元素前面位置创建兄弟元素。</p>
+
+                <blockquote>
+                    <p> <strong>tag</strong>  标签名称</p>
+                    <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                    <p> <strong>self</strong>  [可选]是否将当前元素置为所选元素，默认为 false</p>
+                </blockquote>
+
+                <pre>R("#example").insert( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
+
+                <p> <button type="button" id="btn_insert">测试</button> </p>
+
+                <p id="insert"> 我是参照对象 </p>
+
+            </dd>
+
+            <dt> .append( ele ) </dt>
+            <dd>
+
+                <p>将当前元素插入到指定位置。</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  元素集合，hr, br 形式，可以多个</p>
+                </blockquote>
+
+                <pre>R("#example").append( document.createElement("hr") );</pre>
+
+                <p>同时插入多个元素。</p>
+
+                <pre>R("#example").append( document.createElement("hr"), document.createElement("br") );</pre>
+
+                <p> <button type="button" id="btn_append">测试</button> </p>
+
+                <p id="append"></p>
+
+            </dd>
+
+            <dt> .remove( [attr] ) </dt>
+            <dd>
+
+                <p>将当前元素从页面中移除。</p>
+
+                <pre>R("#example").remove();</pre>
+
+                <p> <button type="button" id="btn_remove">测试</button> </p>
+
+                <p id="remove">
+                    这里是操作的内容。
+                </p>
+
+                <p>将当前属性从元素中移除。</p>
+
+                <pre>R("#example").remove( 'style' );</pre>
+
+                <p> <button type="button" id="btn_unattr">测试</button> </p>
+
+                <p id="unattr" style="color:red;">
+                    这里是操作的内容。
+                </p>
+
+            </dd>
+
+        </dl>
+
+        <script type="text/javascript" src="res/test.js"></script>
+		</article>
+
+    </div>
+
+	<footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+
+</body>
+</html>

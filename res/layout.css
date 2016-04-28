@@ -1,0 +1,117 @@
+html,body{
+	 margin:0 auto;  padding:0 auto;
+}
+
+body{
+	font-size: 14px; font-family:Helvetica;  font-family:"Microsoft YaHei"; 
+}
+
+input:not([type]), input[type=text], textarea, select{ padding:8px 10px; border:1px solid #ccc; }
+input[type=submit], button{ padding:8px; }
+
+/*	主体 */
+#wrapper{ margin:0 auto; }
+
+	header{ background: #313F54; overflow: hidden; padding: 10px; position: fixed; top: 0; width: 100%; text-align:center; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5); }
+
+		/*			页头		*/
+		header .named{ color:#fff; font-size:24px; line-height:40px; margin:0; font-family: Papyrus; }
+			header .named span{ color:#ccc; }
+
+		/*			说明		*/
+		header .build{ color:#ccc; font-size:12px; margin:.5em 2em; line-height:30px; float:left; font-weight:normal; }
+
+		/*			搜索		*/
+		header .search{ line-height:30px; font-weight:normal; width:300px; float:right; }
+			header .search input{ box-sizing: border-box; color:#ccc; background: none; border:none; border-bottom:#444 solid 1px; display: block; width: 100%; vertical-align:middle; padding:10px; font-size:14px; }
+			header .search input:hover{ border-color:#79a6ad; outline: none; }
+
+		/*		导航	*/
+		nav{ text-align:center; }
+			nav ul{ margin:auto; padding:0; overflow:hidden; zoom:1; }
+			nav ul li{ display:inline-block; font-size:14px; line-height:20px; overflow:hidden; padding:5px; }
+			nav ul li a{ color:#AAA; text-decoration:none; display:inline-block; text-shadow: #333 1px 0 1px; }
+			nav ul li a:hover{ color:#999; }
+			nav ul li a.active{ color:#FF9900; }
+			nav ul li:after{ content:'/'; color:#37537B; overflow:hidden; margin-left:10px; }
+			nav ul li:last-child:after{ content:''; }
+
+	/*	页尾 */
+	footer{ background:url(pic/footer.gif) repeat-x; padding:15px; height:20px; margin-top:50px; text-align:center; overflow:hidden;}
+		footer a{ margin:0 5px; display:inline-block; text-decoration: none; }
+		footer a:after{ content:'|'; color:#CCC; overflow:hidden; margin-left:10px; }
+		footer a:last-child:after{ content:''; }
+
+	article{ padding: 5%; padding-top: 100px; background: #FFF; background:#FBFBFB url(pic/header.gif) repeat-x; }
+
+	/*		索引	*/
+	menu{ overflow:hidden; background:#fff; border: #999 dotted 1px; }
+		menu ul{ padding:10px 10px 10px 30px; margin:0; overflow:hidden; }
+		menu li{ width:33.3333%; float:left; line-height:25px; }
+		menu li a{  text-decoration:none; }
+		menu li a:hover{ color:#333; }
+
+	/*		内容区	*/
+	#entry{ margin:0; padding:0; line-height:20px; overflow:hidden; zoom:1; }
+
+		#entry dt{ padding:10px; color:#666; border-bottom: #ECECEC solid 1px; font-size: 24px; font-family:'Trebuchet MS'; }
+
+		/*			更多示例		*/
+		#entry dt.more{ background:#80CC2D; background:#06C; }
+		#entry dd{ margin:0; margin-bottom:2%; padding: 1%; clear:both; color:#000; }
+			#entry dd img , #entry dd button , #entry dd input{ vertical-align:middle;}
+			
+
+		/*			表格		*/
+		#entry dd table{ width:100%; margin:5px 0; border-spacing: 0; border-collapse: collapse;}
+		#entry dd table td{ padding:10px; border-bottom: #DBDCDC solid 1px;}
+		#entry dd table td.item{ background:#efefef; }
+		#entry dd table thead td{ font-weight:bold; vertical-align: bottom; border-bottom: 2px solid #ddd; }
+		
+		#entry dd tbody tr:nth-of-type(odd){ background-color: #f9f9f9; }
+
+		/*			进度条		*/
+		#entry dd table td .count{ float:right;}
+		#entry dd table td .ratio{height:15px; display:block; float:left; background:#ccc url(pic/ratio.png) repeat; width:100%;}
+		#entry dd table td .ratio span{ display:inline-block; height:15px;}
+
+		/*			注释		*/
+		#entry blockquote{ background:#FFFFCC; padding:1.5%; margin:0; overflow:hidden; }
+			#entry blockquote strong{ width:100px; display:inline-block;}
+
+		/*			代码		*/
+		#entry pre{ line-height:16px; color:blue; background:#EFEFEF; padding:1.5%; font-family:Verdana; word-wrap: break-word; }
+			#entry pre em{ color:red; }
+
+		/*			提示文字		*/
+		#entry em{ color:#999; }
+
+		/*			文本框		*/
+       #entry textarea { border:#DDD 1px solid; padding:10px; background:#EEE; font-size:12px; }
+
+	/* 通知 */
+	#toast{
+		background: rgba(255, 255, 255, 0.85); color: #FFF; padding: 10px;	position: fixed;
+		z-index: 100; display: inline-block; margin:auto; transform: translateY(-50%); top: 50%; left: 0; right: 0; max-width: 300px; line-height: 20px;
+		font-size: 14px; text-align: center; border-radius: 5px; -webkit-transition: all .3s ease-in; opacity:0; -webkit-filter: blur(2px);
+	}
+		#toast.success{ background:rgb(132, 197, 116); background:rgba(132, 197, 116, 0.8); opacity:1; -webkit-filter: none; }
+		#toast.failure{ background:rgb(197, 116, 116); background:rgba(197, 116, 116, 0.8); opacity:1; -webkit-filter: none; }
+		#toast.message{ background:rgb(241, 186, 117); background:rgba(241, 186, 117, 0.8); opacity:1; -webkit-filter: none; }
+		#toast .button{ position: absolute; right: 6px; top: 6px; }
+
+
+	/*		自述	*/
+	summary{ padding:20px 50px 20px 180px; margin:0; line-height:30px; background:#fff url(pic/tree.gif) 30px 20px no-repeat; overflow:hidden; zoom:1; border-bottom:#ECECEC solid 1px; }
+
+		summary p{ margin:20px 0; padding:0; overflow:hidden; zoom:1; }
+
+		summary p.text{ float:left; }
+			summary p.text strong{ color:red; }
+
+		summary p.down{ float:right; margin-left:20px; border-left:#ccc dashed 1px; padding-left:20px; }
+			summary p.down strong{ font-size:22px; font-weight:normal; margin:0 15px; }
+			summary p.down a{ font-size:12px;	}
+
+		summary a img{ border:none; vertical-align:middle; }
+		summary button{ float:right; background:url(pic/download.jpg) no-repeat; width:145px; height:40px; color:#fff; font-size:25px; font-weight:bold; text-align:center; border:none; }

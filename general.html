@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
+<script src="lib/ray.js" type="text/javascript" charset="utf-8"></script>
+<script src="res/static.js" type="text/javascript" charset="utf-8"></script>
+<link href="res/layout.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header>
+	        <h1 class="named"> R<span>.js</span> </h1>
+			<nav>
+	            <ul>
+	                <li><a href="./">Home</a></li>
+	                <li><a href="general.html">General</a></li>
+	                <li><a href="browser.html">Browser</a></li>
+	                <li><a href="selector.html">Selector</a></li>
+	                <li><a href="event.html">Event</a></li>
+	                <li><a href="ajax.html">Ajax</a></li>
+	                <li><a href="cookie.html">Cookie</a></li>
+	                <li><a href="datetime.html">Datetime</a></li>
+	                <li><a href="string.html">String</a></li>
+	                <li><a href="number.html">Number</a></li>
+	                <li><a href="array.html">Array</a></li>
+	                <li><a href="validate.html">Validate</a></li>
+	            </ul>
+	        </nav>
+		</header>
+
+		<article>
+        <dl id="entry">
+
+            <dt> R.$( id ) </dt>
+            <dd>
+
+                <p>等同于 getElementById() 方法，可返回对拥有指定 ID 的第一个对象的引用</p>
+
+                <blockquote>
+                    <p> <strong>id</strong>  元素 ID ，字符串</p>
+                </blockquote>
+                
+                <pre>R.$( "test" ).innerHTML;</pre>
+            </dd>
+            
+            <dt> R.reader( func ) </dt>
+            <dd>
+
+                <p>页面完全加载完毕后执行函数。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  函数名称或匿名函数</p>
+                </blockquote>
+                
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>time</strong>  加载页面耗时，单位：毫秒，此值为估算值</p>
+                </blockquote>
+                
+                <pre>R.reader( function( time ){ alert( '加载页面花了' + time + '毫秒' ); } );</pre>
+
+                <p id="reader">
+                    <img src="res/images/summer.jpg" />
+                </p>
+                
+            </dd>
+
+            <dt> R.resize( func ) </dt>
+            <dd>
+            
+                <p>页面尺寸变化后执行函数。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  函数名称或匿名函数</p>
+                </blockquote>
+                            
+                <pre>R.resize( function(){ alert(''); } );</pre>
+                
+                <p id="resize"></p>
+                
+            </dd>
+            
+            <dt> R.Template( id, data ) </dt>
+            <dd>
+
+                <p>微型 JavaScript 模板引擎，它拥有缓存机制、支持使用原生的 JS 语法进行逻辑判断</p>
+
+                <blockquote>
+                    <p> <strong>id</strong>  元素 ID ，字符串</p>
+                    <p> <strong>data</strong>  数据集，JSON</p>
+                </blockquote>
+                
+                <pre>
+&lt;script type="text/html" id="user_tmpl"&gt;
+        链接总数：&lt;%=users.length%&gt;
+        &lt;% for ( var i = 0; i &lt; users.length; i++ ) { %&gt;
+        &lt;li&gt;&lt;a href="&lt;%=users[i].url%&gt;">&lt;%=users[i].name%&gt;&lt;/a&gt; &lt;%=(  i == users.length - 1 ? '*' : '' ) %&gt;&lt;/li&gt;
+        &lt;% } %&gt;
+&lt;/script&gt;
+
+&lt;div id="results"&gt;&lt;/div&gt;
+
+&lt;script&gt;	
+        var dataObject = { users : [ { url : 'http://www.veryide.com/projects/mojs/', name : 'R.js' }, { url : 'http://www.veryide.com', name : 'VeryIDE' } ] }	
+        var results = document.getElementById("results");
+        results.innerHTML = R.Template("user_tmpl", dataObject); 
+&lt;/script&gt;</pre>
+            </dd>
+
+            <dt> R.script( src[, attr, func, target] ) </dt>
+            <dd>				
+
+                <p>加载 JavaScript 到文档或指定元素中。</p>
+
+                <blockquote>
+                    <p> <strong>src</strong>  文件名称或地址，R.js API 请直接使用短标识</p>
+                    <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                    <p> <strong>func</strong>  回调函数</p>
+                    <p> <strong>target</strong>  插入到目标元素上，默认为 &lt;head&gt;</p>
+                </blockquote>
+
+                <pre>R.script( "script.js", { "charset" : "utf-8" }, function(){ test() } );</pre>
+
+                <p><button type="button" id="btn_script">测试</button></p>
+
+                <p id="script"></p>
+                
+                <p>加载 Mo API 到文档，请使用其标识，例如加载 mo.drag.js，则为 drag 。</p>
+                
+                <pre>R.script( "drag", {}, function(){ new R.Drag( R("#drag img").item(0) ); } );</pre>
+
+                <p><button type="button" id="btn_api">测试</button> <strong id="msg"></strong> </p>
+
+                <p id="drag"> <img src="res/images/web20.jpg" style="position:relative;" /> </p>
+
+            </dd>
+
+            <dt> R.jsonp( src, attr, func ) </dt>
+            <dd>				
+
+                <p>加载 JavaScript 到文档或指定元素中。</p>
+
+                <blockquote>
+                    <p> <strong>src</strong>  文件名称或地址，R.js API 请直接使用短标识</p>
+                    <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+                
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>data</strong>  JSON 数据</p>
+                </blockquote>
+
+                <pre>R.jsonp( "json.php?callback=?", { "charset" : "utf-8" }, function( data ){ alert( data ); } );</pre>
+
+                <p><button type="button" id="btn_json">测试</button></p>
+
+                <p id="json"></p>
+
+            </dd>            
+            
+            <dt> R.find( selector[, context] ) </dt>
+            <dd>
+
+                <p>Mo 选择器，返回匹配的页面元素，如果找到匹配元素则返回 array，否则返回 false。</p>
+
+                <blockquote>
+                    <p> <strong>selector</strong>  选择器表达式</p>
+                    <p> <strong>context</strong>  基准对象，默认为 document</p>
+                </blockquote>
+
+                <pre>document.write( R.find( "#build" )[0].tagName );</pre>
+
+                <p>
+                    <script>document.write( R.find( "#build" )[0].tagName );</script>
+                </p>
+
+            </dd>
+            
+            <dt> R.create( tag[, attr] ) </dt>
+            <dd>
+
+                <p>元素创建工具，返回新创建的元素对象。</p>
+
+                <blockquote>
+                    <p> <strong>tag</strong>  标签名称</p>
+                    <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                </blockquote>
+                
+                <pre>R.create( "div", { "id" : "element", "innerHTML" : "New Element" } );</pre>
+
+                <p>
+                    <script>document.write( R.create( "div", { "id" : "element", "innerHTML" : "New Element" } ) );</script>
+                </p>
+
+            </dd>
+
+            <dt> R.Toast( style, html[, config, func ] ) </dt>
+            <dd>
+
+                <p>页面消息。</p>
+
+                <blockquote>
+                    <p> <strong>style</strong>  样式名称</p>
+                    <p> <strong>html</strong>  HTML 代码</p>
+                    <p> <strong>config</strong>  选项配置</p>
+                    <p> <strong>func</strong>  回调函数</p>
+                </blockquote>
+
+                <p>config 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>time</strong>  显示时间，默认 3 秒</p>
+                    <p> <strong>unique</strong>  唯一ID，设置此参数可以使用选择器来访问</p>
+                </blockquote>
+
+                <pre>R.Toast( "message", '我是来自页面的消息', { 'unique' : 'toast' } );</pre>
+
+                <p> <button type="button" id="btn_message" name="btn_message">测试</button> </p>
+
+                <p>
+                <script>
+                R("#btn_message").bind( "click", function( ele, index, event ){
+                        R.Toast( 'success', '我是来自页面的消息', 3, {'unique':'toast'} );
+                });
+                </script>
+                </p>
+
+            </dd>
+            
+            <dt> R.extend( func ) </dt>
+            <dd>
+
+                <p>扩展 Mo 选择器方法。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  方法集合，{ "abc" : "def" } 形式，可以多个</p>
+                </blockquote>
+
+                <pre>R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); } } );</pre>
+                
+                <p>支持串联方法。</p>
+                
+                <pre>R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); <em>return this;</em> } } );</pre>
+
+                <p>
+                    <script>
+                    
+                        //R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); return this; } } );
+                        
+                        //R("#build").read();
+                        
+                        //R("#build").read().html('xxxxxxxxxx');
+                    
+                    </script>
+                </p>
+
+            </dd>			
+            
+            <dt> R.getViewportSize() </dt>
+            <dd>
+
+                <p>获取当前视口信息。</p>
+                
+                <pre>R.getViewportSize( );</pre>
+                
+                <script type="text/javascript">
+                document.write( dump( R.getViewportSize() ) );
+                </script>
+
+            </dd>
+            
+            <dt> R.getClinetRect( ele ) </dt>
+            <dd>
+
+                <p>获取元素在视口内的位置信息。</p>
+                
+                <blockquote>
+                    <p> <strong>ele</strong> 元素对象</p>
+                </blockquote>
+                
+                <pre>R.getClinetRect( R.$('element') );</pre>
+                
+                <p>
+                    <button id="btn_element">测试</button>
+                </p>
+                
+                <p id="element">
+                </p>
+                
+                <script type="text/javascript">
+                R( "#btn_element" ).bind( 'click' ,function( index ,event ){ 
+                    R("#element").html( dump( R.getClinetRect( R.$('element') ) ) ); 
+                });
+                </script>
+
+            </dd>
+            
+            <dt> R.getScrollPosition( ) </dt>
+            <dd>
+
+                <p>获取当前滚动条信息。</p>
+                
+                <pre>R.getScrollPosition( );</pre>
+                
+                <script type="text/javascript">                
+                document.write( dump( R.getScrollPosition( ) ) );
+                </script>
+
+            </dd>
+
+        </dl>
+
+        <script type="text/javascript">
+
+        /************* 页面载入 测试 ****************/
+        
+        R.reader(function( time ){ R("#reader").html( R("#reader").html() + '<br />我花了'+time+'毫秒，终于把页面加载好了！'); });
+
+        R.resize(function(){ R("#resize").html('页面尺寸发生变化了！'); });
+
+        /************* 事件绑定 测试 ****************/
+
+        R("#bind").bind('click',function(){ R("#bind_box").html("你点了我一下！");  R("#bind").unbind('click').html('click').disabled() });
+
+        /************* 加载JSON 测试 ****************/
+
+        R("#btn_json").bind('click',function(){
+            R.jsonp( "http://www.veryide.com/projects/mojs/json.php?callback=?" , {}, function( data ){ R("#json").html( data.html ); } );
+        });
+
+        /************* 加载JS 测试 ****************/
+
+        R("#btn_script").bind('click',function(){
+            R.script( "script.js?"+R.random(10) , { "charset" : "utf-8" }, function(){ test() } );
+        });
+        
+        R("#btn_api").bind('click',function( index, event ){
+        
+            R.script( "drag", {} , function(){
+            
+                R("#msg").html("下图可拖动：");
+                
+                R("#drag img").style( { "border" : "#999 dotted 2px" } );
+                
+                new R.Drag( R("#drag img").item(0) );
+                
+            });
+        });
+
+        /************* Cookie 测试 ****************/
+
+        R("#cookie").bind('click',function(){
+            R.cookie("test","Hi！欢迎使用Mo。");
+            R("#cookie_box").html("我已经保存了！");
+        });
+
+        R("#cookie_read").bind('click',function(){
+            if( R.cookie("test") ){
+                R("#cookie_box").html( R.cookie("test") );
+            }else{
+                R("#cookie_box").html("没有内容！");
+            }
+        });
+
+        /************* URL参数 测试 ****************/
+
+        R("#url_action").bind('click',function(){
+            R("#url_result").value( R.String().get("key",R("#url_source").value()) );
+        });
+
+        </script>
+		</article>
+
+    </div>
+
+    <footer>
+        Copyright &copy; 2016 <a href="http://www.veryide.com">VeryIDE</a>
+		<a href="http://www.veryide.com/projects/">Projects</a>
+		<a href="http://www.veryide.com/projects/mojs/">R.js</a>
+		<a href="packer.html">Packer</a>
+		<a href="regex.html">Regex</a>
+    </footer>
+            
+    <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
+            
+</body>
+</html>
