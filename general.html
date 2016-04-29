@@ -42,10 +42,10 @@
                 <blockquote>
                     <p> <strong>id</strong>  元素 ID ，字符串</p>
                 </blockquote>
-                
+
                 <pre>R.$( "test" ).innerHTML;</pre>
             </dd>
-            
+
             <dt> R.reader( func ) </dt>
             <dd>
 
@@ -54,36 +54,36 @@
                 <blockquote>
                     <p> <strong>func</strong>  函数名称或匿名函数</p>
                 </blockquote>
-                
+
                 <p>func 可接受参数</p>
 
                 <blockquote>
                     <p> <strong>time</strong>  加载页面耗时，单位：毫秒，此值为估算值</p>
                 </blockquote>
-                
+
                 <pre>R.reader( function( time ){ alert( '加载页面花了' + time + '毫秒' ); } );</pre>
 
                 <p id="reader">
                     <img src="res/images/summer.jpg" />
                 </p>
-                
+
             </dd>
 
             <dt> R.resize( func ) </dt>
             <dd>
-            
+
                 <p>页面尺寸变化后执行函数。</p>
 
                 <blockquote>
                     <p> <strong>func</strong>  函数名称或匿名函数</p>
                 </blockquote>
-                            
+
                 <pre>R.resize( function(){ alert(''); } );</pre>
-                
+
                 <p id="resize"></p>
-                
+
             </dd>
-            
+
             <dt> R.Template( id, data ) </dt>
             <dd>
 
@@ -93,7 +93,7 @@
                     <p> <strong>id</strong>  元素 ID ，字符串</p>
                     <p> <strong>data</strong>  数据集，JSON</p>
                 </blockquote>
-                
+
                 <pre>
 &lt;script type="text/html" id="user_tmpl"&gt;
         链接总数：&lt;%=users.length%&gt;
@@ -104,15 +104,15 @@
 
 &lt;div id="results"&gt;&lt;/div&gt;
 
-&lt;script&gt;	
-        var dataObject = { users : [ { url : 'http://www.veryide.com/projects/mojs/', name : 'R.js' }, { url : 'http://www.veryide.com', name : 'VeryIDE' } ] }	
+&lt;script&gt;
+        var dataObject = { users : [ { url : 'http://www.veryide.com/projects/mojs/', name : 'R.js' }, { url : 'http://www.veryide.com', name : 'VeryIDE' } ] }
         var results = document.getElementById("results");
-        results.innerHTML = R.Template("user_tmpl", dataObject); 
+        results.innerHTML = R.Template("user_tmpl", dataObject);
 &lt;/script&gt;</pre>
             </dd>
 
             <dt> R.script( src[, attr, func, target] ) </dt>
-            <dd>				
+            <dd>
 
                 <p>加载 JavaScript 到文档或指定元素中。</p>
 
@@ -128,9 +128,9 @@
                 <p><button type="button" id="btn_script">测试</button></p>
 
                 <p id="script"></p>
-                
+
                 <p>加载 Mo API 到文档，请使用其标识，例如加载 mo.drag.js，则为 drag 。</p>
-                
+
                 <pre>R.script( "drag", {}, function(){ new R.Drag( R("#drag img").item(0) ); } );</pre>
 
                 <p><button type="button" id="btn_api">测试</button> <strong id="msg"></strong> </p>
@@ -140,7 +140,7 @@
             </dd>
 
             <dt> R.jsonp( src, attr, func ) </dt>
-            <dd>				
+            <dd>
 
                 <p>加载 JavaScript 到文档或指定元素中。</p>
 
@@ -149,7 +149,7 @@
                     <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
                     <p> <strong>func</strong>  回调函数</p>
                 </blockquote>
-                
+
                 <p>func 可接受参数</p>
 
                 <blockquote>
@@ -162,8 +162,8 @@
 
                 <p id="json"></p>
 
-            </dd>            
-            
+            </dd>
+
             <dt> R.find( selector[, context] ) </dt>
             <dd>
 
@@ -181,7 +181,7 @@
                 </p>
 
             </dd>
-            
+
             <dt> R.create( tag[, attr] ) </dt>
             <dd>
 
@@ -191,7 +191,7 @@
                     <p> <strong>tag</strong>  标签名称</p>
                     <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
                 </blockquote>
-                
+
                 <pre>R.create( "div", { "id" : "element", "innerHTML" : "New Element" } );</pre>
 
                 <p>
@@ -232,7 +232,7 @@
                 </p>
 
             </dd>
-            
+
             <dt> R.extend( func ) </dt>
             <dd>
 
@@ -243,74 +243,74 @@
                 </blockquote>
 
                 <pre>R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); } } );</pre>
-                
+
                 <p>支持串联方法。</p>
-                
+
                 <pre>R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); <em>return this;</em> } } );</pre>
 
                 <p>
                     <script>
-                    
+
                         //R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); return this; } } );
-                        
+
                         //R("#build").read();
-                        
+
                         //R("#build").read().html('xxxxxxxxxx');
-                    
+
                     </script>
                 </p>
 
-            </dd>			
-            
+            </dd>
+
             <dt> R.getViewportSize() </dt>
             <dd>
 
                 <p>获取当前视口信息。</p>
-                
+
                 <pre>R.getViewportSize( );</pre>
-                
+
                 <script type="text/javascript">
                 document.write( dump( R.getViewportSize() ) );
                 </script>
 
             </dd>
-            
+
             <dt> R.getClinetRect( ele ) </dt>
             <dd>
 
                 <p>获取元素在视口内的位置信息。</p>
-                
+
                 <blockquote>
                     <p> <strong>ele</strong> 元素对象</p>
                 </blockquote>
-                
+
                 <pre>R.getClinetRect( R.$('element') );</pre>
-                
+
                 <p>
                     <button id="btn_element">测试</button>
                 </p>
-                
+
                 <p id="element">
                 </p>
-                
+
                 <script type="text/javascript">
-                R( "#btn_element" ).bind( 'click' ,function( index ,event ){ 
-                    R("#element").html( dump( R.getClinetRect( R.$('element') ) ) ); 
+                R( "#btn_element" ).bind( 'click' ,function( index ,event ){
+                    R("#element").html( dump( R.getClinetRect( R.$('element') ) ) );
                 });
                 </script>
 
             </dd>
-            
+
             <dt> R.getScrollPosition( ) </dt>
             <dd>
 
                 <p>获取当前滚动条信息。</p>
-                
+
                 <pre>R.getScrollPosition( );</pre>
-                
-                <script type="text/javascript">                
-                document.write( dump( R.getScrollPosition( ) ) );
-                </script>
+
+				<p>返回数据示例</p>
+
+				<pre>{"left" : "0","top" : "0"}</pre>
 
             </dd>
 
@@ -319,7 +319,7 @@
         <script type="text/javascript">
 
         /************* 页面载入 测试 ****************/
-        
+
         R.reader(function( time ){ R("#reader").html( R("#reader").html() + '<br />我花了'+time+'毫秒，终于把页面加载好了！'); });
 
         R.resize(function(){ R("#resize").html('页面尺寸发生变化了！'); });
@@ -339,17 +339,17 @@
         R("#btn_script").bind('click',function(){
             R.script( "script.js?"+R.random(10) , { "charset" : "utf-8" }, function(){ test() } );
         });
-        
+
         R("#btn_api").bind('click',function( index, event ){
-        
+
             R.script( "drag", {} , function(){
-            
+
                 R("#msg").html("下图可拖动：");
-                
+
                 R("#drag img").style( { "border" : "#999 dotted 2px" } );
-                
+
                 new R.Drag( R("#drag img").item(0) );
-                
+
             });
         });
 
@@ -386,8 +386,8 @@
 		<a href="packer.html">Packer</a>
 		<a href="regex.html">Regex</a>
     </footer>
-            
+
     <code hidden="analysis"><script language="javascript" type="text/javascript" src="http://js.users.51.la/960393.js"></script></code>
-            
+
 </body>
 </html>

@@ -113,39 +113,38 @@
 
             </dd>
 
-            <dt> .isOnDom( node ) </dt>
+            <dt> .isOnDom() </dt>
             <dd>
 
                 <p>判断目标节点是否存在于 DOM 中。</p>
-                
+
                 <blockquote>
                     <p> <strong>node</strong> 节点对象</p>
                 </blockquote>
-                
-                <pre>R.isOnDom( document.body );</pre>
 
-                <p>                
+                <pre>R( R.$('wrapper') ).isOnDom();</pre>
+
+                <p>
                 <script type="text/javascript">
-                document.write( R.isOnDom( document.body ) );
-                </script>                
+                document.write( R( R.$('wrapper') ).isOnDom() );
+                </script>
                 </p>
 
             </dd>
 
-            <dt> .contains( a, b ) </dt>
+            <dt> .contains( node ) </dt>
             <dd>
 
-                <p>检测 b 节点是否包含在于 a 元素中。</p>
-                
+                <p>检测在当前元素中是否包含某节点。</p>
+
                 <blockquote>
-                    <p> <strong>a</strong> 节点对象</p>
-                    <p> <strong>b</strong> 节点对象</p>
+                    <p> <strong>node</strong> 节点对象</p>
                 </blockquote>
-                
-                <pre>R.contains( document.body, R.$('wrapper') );</pre>
-                
+
+                <pre>R( document.body ).contains( R.$('wrapper') );</pre>
+
                 <script type="text/javascript">
-                document.write( R.contains( document.body, R.$('wrapper') ) );
+                document.write( R( document.body ).contains( R.$('wrapper') ) );
                 </script>
 
             </dd>
@@ -156,8 +155,6 @@
                 <p>返回元素数量，如果没有则返回 0</p>
 
                 <pre>R("#example").size();</pre>
-
-                <p><script> document.write( R("#example").size() );</script></p>
 
             </dd>
 
@@ -200,12 +197,6 @@
 
                 <pre>R("#example").hide();</pre>
 
-                <p><button type="button" id="btn_hide">测试</button></p>
-
-                <p id="hide">
-                    我叫 R.js ，你可以称呼我为小 Mo。
-                </p>
-
             </dd>
 
             <dt> .show( [func] ) </dt>
@@ -224,12 +215,6 @@
                 </blockquote>
 
                 <pre>R("#example").show();</pre>
-
-                <p><button type="button" id="btn_show">测试</button></p>
-
-                <p id="show" style="display:none;">
-                    我叫 R.js ，你可以称呼我为小 Mo。
-                </p>
 
             </dd>
 
@@ -251,9 +236,7 @@
 
                 <pre>R("#example").toggle();</pre>
 
-                <p><button type="button" id="btn_toggle">测试</button></p>
-
-                <div id="toggle">我叫 R.js ，你可以称呼我为小 Mo。</div>
+                <pre>R("#example").toggle( function( ele, res ){ alert( res ? '显示' : '隐藏' ) } );</pre>
 
             </dd>
 
@@ -436,11 +419,7 @@
 
                 <pre>R("#example").html( '&lt;a href="http://www.veryide.com/"&gt;VeryIDE&lt;/a&gt;' );</pre>
 
-                <p><button type="button" id="btn_html">测试</button></p>
-
-                <p id="html">
-                    我叫 R.js ，你可以称呼我为小 Mo。
-                </p>
+                <pre>R("#example").html( '&lt;a href="http://www.veryide.com/"&gt;VeryIDE&lt;/a&gt;', true );</pre>
 
             </dd>
 
@@ -467,13 +446,9 @@
                     <p> <strong>val</strong>  属性值</p>
                 </blockquote>
 
-                <pre>R("#example").attr( "width" , R.between( 100 , 200 ) );</pre>
+                <pre>R("#example").attr( "width" , 100 );</pre>
 
-                <p><button type="button" id="btn_attr">测试</button> <span id="box_attr"></span></p>
-
-                <p>
-                    <img id="attr" width="200" src="res/images/wait.gif" />
-                </p>
+                <pre>R("#example").attr( "width" , R.Number().between( 100 , 200 ) );</pre>
 
             </dd>
 
@@ -538,9 +513,9 @@
 
                 <pre>R("#example").position();</pre>
 
-                <p> <button type="button" id="btn_position">测试</button> </p>
+	            <p>返回数据示例</p>
 
-                <p id="position"> </p>
+                <pre>{ width : 1292, height : 80, top : 9041, left : 86 }</pre>
 
             </dd>
 
@@ -615,11 +590,9 @@
 
 				<pre>R("#example").parent( 2 );</pre>
 
-				<p id="btn_parent"></p>
-
 		    </dd>
 
-		    <dt> .blur( func ) </dt>
+		    <dt> .blur( [func] ) </dt>
 		    <dd>
 
 				<p>将当前元素失去焦点，并回调函数。</p>
@@ -636,8 +609,6 @@
 				</blockquote>
 
 				<pre>R("#example").blur();</pre>
-
-				<p> <input id="blur_box" name="" value="" tabindex="0" /> <button type="button" id="blur">测试</button> </p>
 
 		    </dd>
 
@@ -659,13 +630,7 @@
 	                <p> <strong>event</strong>  event 对象</p>
 	            </blockquote>
 
-	            <pre>R("#example").bind( 'click',function(){ R("#bind_box").html("你点了我一下！"); } )</pre>
-
-	            <p> <button type="button" id="bind">测试</button> </p>
-
-	            <p id="bind_box">
-	                这里是操作的内容。
-	            </p>
+	            <pre>R("#example").bind( 'click', function(){ alert("你点了我一下！"); } )</pre>
 
 	        </dd>
 
@@ -678,9 +643,7 @@
 	                <p> <strong>event</strong>  事件名称</p>
 	            </blockquote>
 
-	            <pre>R("#example").unbind();</pre>
-
-	            <p> <button type="button" id="unbind">测试</button> </p>
+	            <pre>R("#example").unbind( 'click' );</pre>
 
 	        </dd>
 
@@ -693,7 +656,7 @@
 
             </dd>
 
-            <dt> .submit( func ) </dt>
+            <dt> .submit( [func] ) </dt>
             <dd>
 
                 <p>将当前表单提交，并在之行执行函数。</p>
@@ -709,6 +672,8 @@
                     <p> <strong>index</strong>  当前元素索引值</p>
                 </blockquote>
 
+                <pre>R("#example").submit();</pre>
+
                 <p>func 需返回参数</p>
 
                 <blockquote>
@@ -717,10 +682,6 @@
                 </blockquote>
 
                 <pre>R("#example").submit( function(){ return confirm( '确定要提交吗?' ); } );</pre>
-
-                <form id="form_submit">
-                <p> <input id="q" name="q" value="mo.js" /> <button type="button">测试</button> </p>
-                </form>
 
             </dd>
 
@@ -795,8 +756,6 @@
 
                 <pre>R("#example").blur();</pre>
 
-                <p> <input id="blur_box" name="" value="" tabindex="0" /> <button type="button" id="blur">测试</button> </p>
-
             </dd>
 
             <dt> .disabled() </dt>
@@ -805,12 +764,6 @@
                 <p>将当前元素禁用。</p>
 
                 <pre>R("#example").disabled();</pre>
-
-                <p> <button type="button" id="btn_disabled">测试</button> </p>
-
-                <p id="disabled">
-                    这里是操作的内容。
-                </p>
 
                 <p>
                     <em>
@@ -826,12 +779,6 @@
                 <p>将当前元素启用。</p>
 
                 <pre>R("#example").enabled();</pre>
-
-                <p> <button type="button" id="btn_enabled">测试</button> </p>
-
-                <p id="enabled" disabled="true">
-                    这里是操作的内容。
-                </p>
 
                 <p>
                     <em>
@@ -886,10 +833,6 @@
 
                 <pre>R("#example").create( "strong" , { "innerHTML" : "我是刚创建的 strong 标签。", "data-test" : "strong" } );</pre>
 
-                <p> <button type="button" id="btn_create">测试</button> </p>
-
-                <p id="create"></p>
-
             </dd>
 
             <dt> .insert( tag[, attr, self] ) </dt>
@@ -905,9 +848,28 @@
 
                 <pre>R("#example").insert( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
 
-                <p> <button type="button" id="btn_insert">测试</button> </p>
+            </dd>
 
-                <p id="insert"> 我是参照对象 </p>
+            <dt> .adjacent( position, text ) </dt>
+            <dd>
+
+                <p>在当前元素指定位置插入内容。</p>
+
+                <blockquote>
+                    <p> <strong>position</strong>  位置（可选参数：beforebegin、afterbegin、beforeend、afterend）</p>
+                    <p> <strong>text</strong>  内容</p>
+                </blockquote>
+
+				<pre>
+&lt;!-- beforebegin --&gt;
+&lt;p>
+&lt;!-- afterbegin --&gt;
+foo
+&lt;!-- beforeend --&gt;
+&lt;/p>
+&lt;!-- afterend --&gt;</pre>
+
+                <pre>R("#example").adjacent( "beforebegin" , '&lt;p&gt;我是刚创建的 p 标签。&lt;/p&gt;' );</pre>
 
             </dd>
 
@@ -926,10 +888,6 @@
 
                 <pre>R("#example").append( document.createElement("hr"), document.createElement("br") );</pre>
 
-                <p> <button type="button" id="btn_append">测试</button> </p>
-
-                <p id="append"></p>
-
             </dd>
 
             <dt> .remove( [attr] ) </dt>
@@ -939,21 +897,9 @@
 
                 <pre>R("#example").remove();</pre>
 
-                <p> <button type="button" id="btn_remove">测试</button> </p>
-
-                <p id="remove">
-                    这里是操作的内容。
-                </p>
-
                 <p>将当前属性从元素中移除。</p>
 
                 <pre>R("#example").remove( 'style' );</pre>
-
-                <p> <button type="button" id="btn_unattr">测试</button> </p>
-
-                <p id="unattr" style="color:red;">
-                    这里是操作的内容。
-                </p>
 
             </dd>
 

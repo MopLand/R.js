@@ -3,7 +3,7 @@ html,body{
 }
 
 body{
-	font-size: 14px; font-family:Helvetica;  font-family:"Microsoft YaHei"; 
+	font-size: 14px; font-family:Helvetica;  font-family:"Microsoft YaHei";
 }
 
 input:not([type]), input[type=text], textarea, select{ padding:8px 10px; border:1px solid #ccc; }
@@ -60,14 +60,14 @@ input[type=submit], button{ padding:8px; }
 		#entry dt.more{ background:#80CC2D; background:#06C; }
 		#entry dd{ margin:0; margin-bottom:2%; padding: 1%; clear:both; color:#000; }
 			#entry dd img , #entry dd button , #entry dd input{ vertical-align:middle;}
-			
+
 
 		/*			表格		*/
 		#entry dd table{ width:100%; margin:5px 0; border-spacing: 0; border-collapse: collapse;}
 		#entry dd table td{ padding:10px; border-bottom: #DBDCDC solid 1px;}
 		#entry dd table td.item{ background:#efefef; }
 		#entry dd table thead td{ font-weight:bold; vertical-align: bottom; border-bottom: 2px solid #ddd; }
-		
+
 		#entry dd tbody tr:nth-of-type(odd){ background-color: #f9f9f9; }
 
 		/*			进度条		*/
@@ -80,7 +80,7 @@ input[type=submit], button{ padding:8px; }
 			#entry blockquote strong{ width:100px; display:inline-block;}
 
 		/*			代码		*/
-		#entry pre{ line-height:16px; color:blue; background:#EFEFEF; padding:1.5%; font-family:Verdana; word-wrap: break-word; }
+		#entry pre{ line-height:16px; color:#3061BD; background:#EFEFEF; padding:1.5%; word-wrap: break-word; font-family: 'Trebuchet MS'; font-size: 16px; }
 			#entry pre em{ color:red; }
 
 		/*			提示文字		*/
