@@ -113,26 +113,7 @@
 
             </dd>
 
-            <dt> .isOnDom() </dt>
-            <dd>
-
-                <p>判断目标节点是否存在于 DOM 中。</p>
-
-                <blockquote>
-                    <p> <strong>node</strong> 节点对象</p>
-                </blockquote>
-
-                <pre>R( R.$('wrapper') ).isOnDom();</pre>
-
-                <p>
-                <script type="text/javascript">
-                document.write( R( R.$('wrapper') ).isOnDom() );
-                </script>
-                </p>
-
-            </dd>
-
-            <dt> .contains( node ) </dt>
+            <dt> .exist( node ) </dt>
             <dd>
 
                 <p>检测在当前元素中是否包含某节点。</p>
@@ -142,10 +123,6 @@
                 </blockquote>
 
                 <pre>R( document.body ).contains( R.$('wrapper') );</pre>
-
-                <script type="text/javascript">
-                document.write( R( document.body ).contains( R.$('wrapper') ) );
-                </script>
 
             </dd>
 
@@ -820,33 +797,98 @@
 
             </dd>
 
-            <dt> .create( tag[, attr, self] ) </dt>
+			<dt> .append( node[, attr] ) </dt>
             <dd>
 
-                <p>在当前元素上创建子元素。</p>
+                <p>将当前元素插入到指定位置。</p>
 
                 <blockquote>
-                    <p> <strong>tag</strong>  标签名称</p>
-                    <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
-                    <p> <strong>self</strong>  [可选]是否将当前元素置为所选元素，默认为 false</p>
+                    <p> <strong>node</strong>  元素集合，hr, br 形式，可以多个</p>
+					<p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
                 </blockquote>
 
-                <pre>R("#example").create( "strong" , { "innerHTML" : "我是刚创建的 strong 标签。", "data-test" : "strong" } );</pre>
+                <pre>R("#example").insert( "p" );</pre>
+
+                <p>同时插入有属性元素。</p>
+
+                <pre>R("#example").insert( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
 
             </dd>
 
-            <dt> .insert( tag[, attr, self] ) </dt>
+            <dt> .before( node[, attr] ) </dt>
             <dd>
 
                 <p>在当前元素前面位置创建兄弟元素。</p>
 
                 <blockquote>
-                    <p> <strong>tag</strong>  标签名称</p>
+                    <p> <strong>node</strong>  标签名称</p>
                     <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
-                    <p> <strong>self</strong>  [可选]是否将当前元素置为所选元素，默认为 false</p>
                 </blockquote>
 
-                <pre>R("#example").insert( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
+                <pre>R("#example").before( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
+
+            </dd>
+
+            <dt> .after( node[, attr] ) </dt>
+            <dd>
+
+                <p>在当前元素后面位置创建兄弟元素。</p>
+
+                <blockquote>
+                    <p> <strong>node</strong>  标签名称</p>
+                    <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                </blockquote>
+
+                <pre>R("#example").after( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
+
+            </dd>
+
+            <dt> .replace( node[, attr] ) </dt>
+            <dd>
+
+                <p>将当前元素插入到指定位置。</p>
+
+                <blockquote>
+                    <p> <strong>node</strong>  元素集合，hr, br 形式，可以多个</p>
+					<p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                </blockquote>
+
+                <pre>R("#example").replace( document.createElement("hr") );</pre>
+
+                <p>同时插入有属性元素。</p>
+
+                <pre>R("#example").replace( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
+
+            </dd>
+
+            <dt> .swap( node[, attr] ) </dt>
+            <dd>
+
+                <p>将当前元素插入到指定位置。</p>
+
+                <blockquote>
+                    <p> <strong>node</strong>  元素集合，hr, br 形式，可以多个</p>
+					<p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
+                </blockquote>
+
+                <pre>R("#example").replace( document.createElement("hr") );</pre>
+
+                <p>同时插入有属性元素。</p>
+
+                <pre>R("#example").replace( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
+
+            </dd>
+
+            <dt> .remove( [attr] ) </dt>
+            <dd>
+
+                <p>将当前元素从页面中移除。</p>
+
+                <pre>R("#example").remove();</pre>
+
+                <p>将当前属性从元素中移除。</p>
+
+                <pre>R("#example").remove( 'style' );</pre>
 
             </dd>
 
@@ -870,36 +912,6 @@ foo
 &lt;!-- afterend --&gt;</pre>
 
                 <pre>R("#example").adjacent( "beforebegin" , '&lt;p&gt;我是刚创建的 p 标签。&lt;/p&gt;' );</pre>
-
-            </dd>
-
-            <dt> .append( ele ) </dt>
-            <dd>
-
-                <p>将当前元素插入到指定位置。</p>
-
-                <blockquote>
-                    <p> <strong>ele</strong>  元素集合，hr, br 形式，可以多个</p>
-                </blockquote>
-
-                <pre>R("#example").append( document.createElement("hr") );</pre>
-
-                <p>同时插入多个元素。</p>
-
-                <pre>R("#example").append( document.createElement("hr"), document.createElement("br") );</pre>
-
-            </dd>
-
-            <dt> .remove( [attr] ) </dt>
-            <dd>
-
-                <p>将当前元素从页面中移除。</p>
-
-                <pre>R("#example").remove();</pre>
-
-                <p>将当前属性从元素中移除。</p>
-
-                <pre>R("#example").remove( 'style' );</pre>
 
             </dd>
 

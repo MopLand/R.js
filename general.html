@@ -84,13 +84,13 @@
 
             </dd>
 
-            <dt> R.Template( id, data ) </dt>
+            <dt> R.template( tmpl, data ) </dt>
             <dd>
 
                 <p>微型 JavaScript 模板引擎，它拥有缓存机制、支持使用原生的 JS 语法进行逻辑判断</p>
 
                 <blockquote>
-                    <p> <strong>id</strong>  元素 ID ，字符串</p>
+                    <p> <strong>tmpl</strong>  模板内容或元素 ID</p>
                     <p> <strong>data</strong>  数据集，JSON</p>
                 </blockquote>
 
@@ -107,7 +107,7 @@
 &lt;script&gt;
         var dataObject = { users : [ { url : 'http://www.veryide.com/projects/mojs/', name : 'R.js' }, { url : 'http://www.veryide.com', name : 'VeryIDE' } ] }
         var results = document.getElementById("results");
-        results.innerHTML = R.Template("user_tmpl", dataObject);
+        results.innerHTML = R.template("user_tmpl", dataObject);
 &lt;/script&gt;</pre>
             </dd>
 
@@ -182,13 +182,13 @@
 
             </dd>
 
-            <dt> R.create( tag[, attr] ) </dt>
+            <dt> R.create( node[, attr] ) </dt>
             <dd>
 
                 <p>元素创建工具，返回新创建的元素对象。</p>
 
                 <blockquote>
-                    <p> <strong>tag</strong>  标签名称</p>
+                    <p> <strong>node</strong>  标签名称</p>
                     <p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
                 </blockquote>
 
@@ -200,7 +200,7 @@
 
             </dd>
 
-            <dt> R.Toast( style, html[, config, func ] ) </dt>
+            <dt> R.toast( style, html[, config, func ] ) </dt>
             <dd>
 
                 <p>页面消息。</p>
@@ -236,7 +236,7 @@
             <dt> R.extend( func ) </dt>
             <dd>
 
-                <p>扩展 Mo 选择器方法。</p>
+                <p>扩展 R 选择器方法。</p>
 
                 <blockquote>
                     <p> <strong>func</strong>  方法集合，{ "abc" : "def" } 形式，可以多个</p>
