@@ -20,6 +20,7 @@
 	                <li><a href="browser.html">Browser</a></li>
 	                <li><a href="selector.html">Selector</a></li>
 	                <li><a href="event.html">Event</a></li>
+	                <li><a href="form.html">Form</a></li>
 	                <li><a href="ajax.html">Ajax</a></li>
 	                <li><a href="cookie.html">Cookie</a></li>
 	                <li><a href="datetime.html">Datetime</a></li>
@@ -31,9 +32,22 @@
 	        </nav>
 		</header>
 
+		<article>
+
         <dl id="entry">
 
-            <dt> R.ValidForm( form , func ) </dt>
+            <dt> R.Form( form ) </dt>
+            <dd>				
+
+                <p>执行表单处理操作。</p>
+
+                <blockquote>
+                    <p> <strong>form</strong>  表单对象</p>
+                </blockquote>
+                
+            </dd>
+
+            <dt> .Validate( func ) </dt>
             <dd>
                 <p>表单验证工具。</p>
                 
@@ -49,7 +63,7 @@
                     <p> <strong> ele </strong> 当前元素</p>
                 </blockquote>
 
-                <pre>R.ValidForm( this , function( error, ele ){ alert( error ); });</pre>
+                <pre>R.Form('#form').Validate( function( error, ele ){ alert( error ); });</pre>
                 
                 <form action="?" method="post" onsubmit="return R.ValidForm( this , function( html ){ alert( html ); });">
 
@@ -232,7 +246,7 @@
 
             </dd>
 
-            <dt> R.Serialize( form, func, link ) </dt>
+            <dt> .Serialize( func, link ) </dt>
             <dd>
 
                 <p>将表单元素项和值转为序列化数据。</p>
@@ -243,53 +257,21 @@
                     <p> <strong>link</strong>  是否将结果转换为 URL 字符串，请使用 &</p>
                 </blockquote>
 
-                <pre>R.Serialize( R("form").choice(0) );</pre>
+                <pre>R.Form('#form').Serialize();</pre>
 
                 <p>将表单元素项和值转为 URL 字符串。</p>
 
-                <pre>R.Serialize( R("form").choice(0), function( str ){ return escape( str ); } );</pre>
+                <pre>R.Form('#form').Serialize( function( str ){ return escape( str ); } );</pre>
 
                 <p> <button type="submit" id="btn_url">测试</button> </p>
 
                 <p id="url">  </p>
 
             </dd>
-            
-            <dt> R.Password( string, func ) </dt>
-            <dd>
-
-                <p>密码强度测试。</p>
-                
-                <blockquote>
-                    <p> <strong>string</strong>  字符串</p>
-                    <p> <strong>func</strong>  回调函数</p>
-                </blockquote>
-                
-                <p>func 可接受参数</p>
-
-                <blockquote>
-                    <p> <strong>value </strong>  强度级别值</p>
-                    <p> <strong>level</strong>  强度级别，分为：["极佳","很好","一般","简单"]</p>
-                </blockquote>
-
-                <pre>R.Password( R("form").choice(0) );</pre>
-
-                <p> 密码：<input type="text" name="password" id="password" value="" /> </p>
-
-                <p id="pw"> </p>
-
-            </dd>
-            
-            <dt> R.Config() </dt>
-            <dd>
-
-                <p>将 RGB 颜色值转为 16 进制颜色值。</p>
-
-                <pre>R.Config( [255,255,255] );</pre>
-
-            </dd>
 
         </dl>
+		
+		</article>
         
         <script type="text/javascript">
 

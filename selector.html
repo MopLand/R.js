@@ -20,6 +20,7 @@
 	                <li><a href="browser.html">Browser</a></li>
 	                <li><a href="selector.html">Selector</a></li>
 	                <li><a href="event.html">Event</a></li>
+	                <li><a href="form.html">Form</a></li>
 	                <li><a href="ajax.html">Ajax</a></li>
 	                <li><a href="cookie.html">Cookie</a></li>
 	                <li><a href="datetime.html">Datetime</a></li>
@@ -400,61 +401,41 @@
 
             </dd>
 
-            <dt> .attr( attr ) </dt>
+            <dt> .attr( attr[, value] ) </dt>
             <dd>
 
                 <p>返回元素的属性信息，不存在则返回 null</p>
 
                 <blockquote>
                     <p> <strong>attr</strong> 属性名称 </p>
+                    <p> <strong>value</strong> 属性值（可选） </p>
                 </blockquote>
 
                 <pre>R("#example").attr( "width" );</pre>
 
-            </dd>
-
-            <dt> .attr( { key : val } ) </dt>
-            <dd>
-
-                <p>设置元素的属性信息</p>
-
-                <blockquote>
-                    <p> <strong>key</strong>  属性名称</p>
-                    <p> <strong>val</strong>  属性值</p>
-                </blockquote>
-
                 <pre>R("#example").attr( "width" , 100 );</pre>
 
-                <pre>R("#example").attr( "width" , R.Number().between( 100 , 200 ) );</pre>
+                <pre>R("#example").attr( { "height" : 100 } );</pre>
 
             </dd>
 
-            <dt> .style( attr ) </dt>
+            <dt> .style( attr[, value] ) </dt>
             <dd>
 
                 <p>返回元素的 CSS 样式信息。</p>
 
                 <blockquote>
                     <p> <strong>attr</strong>  属性名称</p>
+                    <p> <strong>value</strong> 属性值（可选） </p>
                 </blockquote>
 
                 <pre>R("#example").style( "color" );</pre>
 
-            </dd>
+                <pre>R("#example").style( "color" : "red" );</pre>
 
-            <dt> .style( { key : val } ) </dt>
-            <dd>
+                <pre>R("#example").style( { "fontColor" : "blue" } );</pre>
 
-                <p>设置元素的 CSS 样式信息。</p>
-
-                <blockquote>
-                    <p> <strong>key</strong>  属性名称</p>
-                    <p> <strong>val</strong>  属性值</p>
-                </blockquote>
-
-                <pre>R("#example").style( { "color" : "red" } );</pre>
-
-                <p>请使用如下语法：</p>
+                <p>设置值时请使用如下语法：</p>
 
                 <table>
                     <thead>
@@ -527,6 +508,26 @@
         }
 
 } );</pre>
+
+            </dd>
+
+            <dt> .filter( func ) </dt>
+            <dd>
+
+                <p>使用自定义方法过滤元素。</p>
+
+                <blockquote>
+                    <p> <strong>func</strong>  函数名称或匿名函数</p>
+                </blockquote>
+
+                <p>func 可接受参数</p>
+
+                <blockquote>
+                    <p> <strong>ele</strong>  当前元素对象，也可直接使用 this</p>
+                    <p> <strong>index</strong>  当前元素索引值</p>
+                </blockquote>
+
+                <pre>R("a").filter( function(){ return this.href.match(/\.(jpg|png|gif)/i); } );</pre>
 
             </dd>
 
