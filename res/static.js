@@ -47,7 +47,7 @@ R.reader(function(){
 	R("#entry dt").each(function(){
 
 		//条目名称
-		var text = R.String( this.innerHTML ).trim().output();
+		var text = R.String( this.innerHTML ).trim();
 		var hash = escape( text );
 
 		//加入到索引

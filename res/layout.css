@@ -28,7 +28,7 @@ input[type=submit], button{ padding:8px; }
 
 		/*		导航	*/
 		nav{ text-align:center; }
-			nav ul{ margin:auto; padding:0; overflow:hidden; zoom:1; }
+			nav ul{ margin:auto; padding:0; overflow:hidden; }
 			nav ul li{ display:inline-block; font-size:14px; line-height:20px; overflow:hidden; padding:5px; }
 			nav ul li a{ color:#AAA; text-decoration:none; display:inline-block; text-shadow: #333 1px 0 1px; }
 			nav ul li a:hover{ color:#999; }
@@ -52,7 +52,7 @@ input[type=submit], button{ padding:8px; }
 		menu li a:hover{ color:#333; }
 
 	/*		内容区	*/
-	#entry{ margin:0; padding:0; line-height:20px; overflow:hidden; zoom:1; }
+	#entry{ margin:0; padding:0; line-height:20px; overflow:hidden; }
 
 		#entry dt{ padding:10px; color:#666; border-bottom: #ECECEC solid 1px; font-size: 24px; font-family:'Trebuchet MS'; }
 
@@ -102,9 +102,9 @@ input[type=submit], button{ padding:8px; }
 
 
 	/*		自述	*/
-	summary{ padding:20px 50px 20px 180px; margin:0; line-height:30px; background:#fff url(pic/tree.gif) 30px 20px no-repeat; overflow:hidden; zoom:1; border-bottom:#ECECEC solid 1px; }
+	summary{ padding:20px 50px 20px 180px; margin:0; line-height:30px; background:#fff url(pic/tree.gif) 30px 20px no-repeat; overflow:hidden; border-bottom:#ECECEC solid 1px; }
 
-		summary p{ margin:20px 0; padding:0; overflow:hidden; zoom:1; }
+		summary p{ margin:20px 0; padding:0; overflow:hidden; }
 
 		summary p.text{ float:left; }
 			summary p.text strong{ color:red; }

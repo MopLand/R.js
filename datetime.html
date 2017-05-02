@@ -36,7 +36,7 @@
 
         <dl id="entry">
 
-            <dt> R.Date( datetime ) </dt>
+            <dt> R.Datetime( datetime ) </dt>
             <dd>				
 
                 <p>执行日期时间处理操作。</p>
@@ -52,11 +52,11 @@
 
                 <p>获取现在的Unix时间戳。</p>
 
-                <pre>R.Date( datetime ).time();</pre>
+                <pre>R.Datetime( datetime ).time();</pre>
 
                 <p id="time"></p>
                 
-                <script type="text/javascript"> window.setInterval( function(){ R("#time").html( R.Date().time() ); }, 1000 ) </script>
+                <script type="text/javascript"> window.setInterval( function(){ R("#time").html( R.Datetime().time() ); }, 1000 ) </script>
 
             </dd>
             
@@ -65,9 +65,9 @@
 
                 <p>判断是否是闰年,返回 true 或者 false。</p>
 
-                <pre>R.Date( datetime ).leapyear();</pre>
+                <pre>R.Datetime( datetime ).leapyear();</pre>
 
-                <script type="text/javascript"> document.write( R.Date().leapyear() ); </script>
+                <script type="text/javascript"> document.write( R.Datetime().leapyear() ); </script>
 
             </dd>
             
@@ -76,15 +76,15 @@
 
                 <p>返回月天数。</p>
 
-                <pre>R.Date( datetime ).days();</pre>
+                <pre>R.Datetime( datetime ).days();</pre>
 
-                <script type="text/javascript"> document.write( R.Date().days() ); </script>
+                <script type="text/javascript"> document.write( R.Datetime().days() ); </script>
 
                 <p>返回2016年2月天数。</p>
 
-                <pre>R.Date( 1328029261 ).days();</pre>
+                <pre>R.Datetime( 1328029261 ).days();</pre>
 
-                <script type="text/javascript"> document.write( R.Date( 1328029261 ).days() ); </script>
+                <script type="text/javascript"> document.write( R.Datetime( 1328029261 ).days() ); </script>
 
             </dd>
 			
@@ -147,16 +147,16 @@
                     </tr>
                 </table>
 
-<pre>document.write( R.date("y-m-d") );</pre>
+<pre>document.write( R.Datetime().format("y-m-d") );</pre>
 
                 <p>
-                    <script>document.write( R.date("y-m-d") );</script>
+                    <script>document.write( R.Datetime().format("y-m-d") );</script>
                 </p>
 
-                <pre>document.write( R.date( "y-m-d", 1328029261 ) );</pre>
+                <pre>document.write( R.Datetime().format( "y-m-d", 1328029261 ) );</pre>
 
                 <p>
-                    <script>document.write( R.date( "y-m-d", 1328029261 ) );</script>
+                    <script>document.write( R.Datetime().format( "y-m-d", 1328029261 ) );</script>
                 </p>
 
             </dd>
@@ -178,12 +178,12 @@
                     <p> <strong>date</strong>  返回相差的时间值，JSON 对象，{ "d":"天", "h":"小时", "m":"分", "s":"秒" }</p>
                 </blockquote>
 
-                <pre>R.DateDiff();</pre>
+                <pre>R.Datetime().diff();</pre>
 
                 <p id="down">
                 <script>                
-                R.DateDiff( ( R.Date().time()+ ( 3600 * 24 * 30 ) ) , function( result, date ){ 
-                        R("#down").html( result + '秒 - 共计' + date["d"]+"天"+date["h"]+"小时"+date["m"]+"分钟"+date["s"]+"秒" ); 
+                R.Datetime().diff( ( R.Datetime().time()+ ( 3600 * 24 * 30 ) ) , function( result, date ){ 
+                        R("#down").html( result + '秒 - 共计' + date["day"]+"天"+date["hour"]+"小时"+date["minute"]+"分钟"+date["second"]+"秒" ); 
                 });
                 </script>
                 </p>

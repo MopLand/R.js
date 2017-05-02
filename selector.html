@@ -123,7 +123,7 @@
                     <p> <strong>node</strong> 节点对象</p>
                 </blockquote>
 
-                <pre>R( document.body ).contains( R.$('wrapper') );</pre>
+                <pre>R( document.body ).exist( R.$('wrapper') );</pre>
 
             </dd>
 
@@ -808,11 +808,11 @@
 					<p> <strong>attr</strong>  属性集合，{ "abc" : "def" } 形式，可以多个</p>
                 </blockquote>
 
-                <pre>R("#example").insert( "p" );</pre>
+                <pre>R("#example").append( "p" );</pre>
 
                 <p>同时插入有属性元素。</p>
 
-                <pre>R("#example").insert( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
+                <pre>R("#example").append( "p" , { "innerHTML" : "我是刚创建的 p 标签。" } );</pre>
 
             </dd>
 
@@ -893,14 +893,14 @@
 
             </dd>
 
-            <dt> .adjacent( position, text ) </dt>
+            <dt> .adjacent( position, object ) </dt>
             <dd>
 
                 <p>在当前元素指定位置插入内容。</p>
 
                 <blockquote>
                     <p> <strong>position</strong>  位置（可选参数：beforebegin、afterbegin、beforeend、afterend）</p>
-                    <p> <strong>text</strong>  内容</p>
+                    <p> <strong>object</strong>  HTML 或元素</p>
                 </blockquote>
 
 				<pre>
@@ -913,6 +913,8 @@ foo
 &lt;!-- afterend --&gt;</pre>
 
                 <pre>R("#example").adjacent( "beforebegin" , '&lt;p&gt;我是刚创建的 p 标签。&lt;/p&gt;' );</pre>
+
+                <pre>R("#example").adjacent( "beforebegin" , document.createElement('hr') );</pre>
 
             </dd>
 

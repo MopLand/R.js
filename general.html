@@ -175,10 +175,10 @@
                     <p> <strong>context</strong>  基准对象，默认为 document</p>
                 </blockquote>
 
-                <pre>document.write( R.find( "#build" )[0].tagName );</pre>
+                <pre>document.write( R.find( "#wrapper" )[0].tagName );</pre>
 
                 <p>
-                    <script>document.write( R.find( "#build" )[0].tagName );</script>
+                    <script>document.write( R.find( "#wrapper" )[0].tagName );</script>
                 </p>
 
             </dd>
@@ -338,7 +338,7 @@
         /************* 加载JS 测试 ****************/
 
         R("#btn_script").bind('click',function(){
-            R.script( "script.js?"+R.random(10) , { "charset" : "utf-8" }, function(){ test() } );
+            R.script( "script.js?"+R.String().random(10) , { "charset" : "utf-8" }, function(){ test() } );
         });
 
         R("#btn_api").bind('click',function( index, event ){

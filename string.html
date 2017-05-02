@@ -67,9 +67,9 @@
 
                 <p>将字符串两边的空白字符去除。</p>
 
-                <pre>R.String(" ex ").trim().output() + R.String(" ample ").trim().output();</pre>
+                <pre>R.String(" ex ").trim() + R.String(" ample ").trim();</pre>
 
-                <p><script>document.write( R.String(" ex ").trim().output() + R.String(" ample ").trim().output() );</script></p>
+                <p><script>document.write( R.String(" ex ").trim() + R.String(" ample ").trim() );</script></p>
 
             </dd>
 
@@ -102,17 +102,6 @@
 
             </dd>
 
-            <dt> .format() </dt>
-            <dd>
-
-                <p>返回格式化后的字符串。</p>
-
-                <pre>R.String("今天是{0}年{1}月{2}日").format( R.date("y"), R.date("m"), R.date("d") );</pre>
-
-                <p><script>document.write( R.String("今天是{0}年{1}月{2}日").format( R.date("y"), R.date("m"), R.date("d") ).output() );</script></p>
-
-            </dd>
-
             <dt> .leftTrim() </dt>
             <dd>
 
@@ -120,7 +109,7 @@
 
                 <pre>R.String(" example ").leftTrim();</pre>
 
-                <p><script>document.write( R.String(" example ").leftTrim().output() );</script></p>
+                <p><script>document.write( R.String(" example ").leftTrim() );</script></p>
 
             </dd>
 
@@ -131,7 +120,7 @@
 
                 <pre>R.String(" example ").rightTrim();</pre>
 
-                <p><script>document.write( R.String(" example ").rightTrim().output() );</script></p>
+                <p><script>document.write( R.String(" example ").rightTrim() );</script></p>
 
             </dd>
 
@@ -142,7 +131,7 @@
 
                 <pre>R.String(" example ").stripScript();</pre>
 
-                <p><script>document.write( R.String(" example ").stripScript().output() );</script></p>
+                <p><script>document.write( R.String(" example ").stripScript() );</script></p>
 
             </dd>
 
@@ -155,7 +144,7 @@
 
                 <pre>R.String( '&lt;p&gt;Kevin&lt;/p&gt; &lt;br /&gt;&lt;b&gt;van&lt;/b&gt; &lt;i&gt;Zonneveld&lt;/i&gt;' ).stripTags( '&lt;i&gt;&lt;b&gt;' );</pre>
 
-                <p><script>document.write( R.String(" example ").stripTags().output() );</script></p>
+                <p><script>document.write( R.String(" example ").stripTags() );</script></p>
 
             </dd>
 
@@ -321,13 +310,13 @@
 
         R("#a2u_encrypt").bind('click',function(){
 
-            R("#a2u_result").value( R.String( R("#a2u_source").value() ).unicode().output() );		
+            R("#a2u_result").value( R.String( R("#a2u_source").value() ).unicode() );		
 
         });
 
         R("#u2a_encrypt").bind('click',function(){
 
-            R("#u2a_result").value( R.String( R("#u2a_source").value() ).ascii().output() );		
+            R("#u2a_result").value( R.String( R("#u2a_source").value() ).ascii() );
 
         });
 
