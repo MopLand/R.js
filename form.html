@@ -70,6 +70,8 @@
                 <p> 名称：<input type="text" name="account" value="" data-valid-name="用户名称" data-valid-empty="yes" /> </p>
                 
                 <p> 金额：<input type="text" name="price" value="" data-valid-name="消费金额" data-valid-number="yes" /> </p>
+				
+				<p><input type="checkbox" name="checkbox[]" value="a" checked /> <input type="checkbox" name="checkbox[b]" value="b" checked /> <input type="checkbox" name="checkbox[c]" value="c" /> <input type="checkbox" name="checkbox[s_d]" value="d" /></p>
 
                 <p> <button type="submit">测试</button> </p>
                 
@@ -278,8 +280,24 @@
         /************* 表单序列化 测试 ****************/
 
         R("#btn_url").bind('click',function(){
+		
+			var data = R.Form( R("form").item(0) ).Serialize( true, false, '&' );
+			console.log( data );
+			
+			//////////////////
 
-            R("#url").html( R.Serialize( R("form").item(0), false, "&" ) );
+			var ajax = new R.Ajax( location.pathname );
+			//var ajax = new R.Ajax( 'x.php' );
+				ajax.method = 'POST';
+				ajax.setVar(data);
+				ajax.onCompletion = function(){
+				//	console.log( ajax.response );					
+				};
+				ajax.send();
+			
+			//////////////////
+
+            R("#url").html( data );
 
         });
         

@@ -220,14 +220,14 @@
                     <p> <strong>unique</strong>  唯一ID，设置此参数可以使用选择器来访问</p>
                 </blockquote>
 
-                <pre>R.Toast( "message", '我是来自页面的消息', { 'unique' : 'toast' } );</pre>
+                <pre>R.toast( "message", '我是来自页面的消息', { 'unique' : 'toast' } );</pre>
 
                 <p> <button type="button" id="btn_message" name="btn_message">测试</button> </p>
 
                 <p>
                 <script>
                 R("#btn_message").bind( "click", function( ele, index, event ){
-                        R.Toast( 'success', '我是来自页面的消息', 3, {'unique':'toast'} );
+                        R.toast( 'success', '我是来自页面的消息', 3, {'unique':'toast'} );
                 });
                 </script>
                 </p>
@@ -249,17 +249,18 @@
 
                 <pre>R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); <em>return this;</em> } } );</pre>
 
-                <p>
-                    <script>
+            </dd>
 
-                        //R.extend( { 'read' : function(){ alert( this.self[0].innerHTML ); return this; } } );
+            <dt> R.lazy( [attr] ) </dt>
+            <dd>
 
-                        //R("#build").read();
+                <p>图片资源懒加载。</p>
 
-                        //R("#build").read().html('xxxxxxxxxx');
+                <blockquote>
+                    <p> <strong>attr</strong>  图片选择器属性，默认值：_src</p>
+                </blockquote>
 
-                    </script>
-                </p>
+                <pre>R.lazy( 'origin' );</pre>
 
             </dd>
 
