@@ -86,21 +86,23 @@
 
             </dd>
 
-            <dt> .random( length ) </dt>
+            <dt> .random( length[, charset] ) </dt>
             <dd>
 
-                <p>产生一个指定长度的随机字符串，并可以控制它的组成方式（大小写，数字）。</p>
+                <p>产生一个指定长度的随机字符串，并可以指定它的组成字符。</p>
 
                 <blockquote>
                     <p> <strong>length</strong>  字符串长度</p>
-                    <p> <strong>upper</strong>  是否允许大写字母，默认允许</p>
-                    <p> <strong>lower</strong>  是否允许小写字母，默认允许</p>
-                    <p> <strong>number</strong>  是否允许数字，默认允许</p>
+                    <p> <strong>charset</strong>  特征字符集合</p>
                 </blockquote>
                 
-                <pre>R.random(40,true,true,true);</pre>
-
-                <p><button type="button" id="random">测试</button> <span id="random_box"></span> </p>
+                <pre>R.String().random(20);</pre>
+				
+				<p><script>document.write( R.String().random(20) );</script></p>
+                
+                <pre>R.String('prefix-').random(10);</pre>
+				
+				<p><script>document.write( R.String('prefix-').random(10) );</script></p>
 
             </dd>
 
@@ -201,28 +203,6 @@
 
                 <pre>R.String(" example ").unicode();</pre>
 
-                <table>
-                    <thead>
-                    <tr>
-                        <td width="50%">原始：</td>
-                        <td>结果：</td>
-                    </tr>
-                    </thead>
-                    <tr>
-                        <td>
-                            <textarea id="a2u_source" rows="4" style="width:96%;">abc</textarea>
-                        </td>
-                        <td>
-                            <textarea id="a2u_result" rows="4" style="width:96%;"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">                        					
-                            <button type="button" id="a2u_encrypt">执行</button>
-                        </td>
-                    </tr>
-                </table>
-
             </dd>
 
             <dt> .ascii() </dt>
@@ -231,28 +211,6 @@
                 <p>将 Unicode 字符串转换为 ASCII。</p>
 
                 <pre>R.String(" example ").ascii();</pre>
-
-                <table>
-                    <thead>
-                    <tr>
-                        <td width="50%">原始：</td>
-                        <td>结果：</td>
-                    </tr>
-                    </thead>
-                    <tr>
-                        <td>
-                            <textarea id="u2a_source" rows="4" style="width:96%;">&amp;#97;&amp;#98;&amp;#99;</textarea>
-                        </td>
-                        <td>
-                            <textarea id="u2a_result" rows="4" style="width:96%;"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">                        					
-                            <button type="button" id="u2a_encrypt">执行</button>
-                        </td>
-                    </tr>
-                </table>
 
             </dd>
             
@@ -279,50 +237,10 @@
 
                 <pre>R.String().get("key");</pre>
 
-                <table>
-                    <thead>
-                    <tr>
-                        <td width="50%">原始：</td>
-                        <td>结果：</td>
-                    </tr>
-                    </thead>
-                    <tr>
-                        <td>
-                            <textarea id="url_source" rows="4" style="width:96%;">http://www.veryide.com/?key=abc</textarea>
-                        </td>
-                        <td>
-                            <textarea id="url_result" rows="4" style="width:96%;"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">                        					
-                            <button type="button" id="url_action">测试</button>
-                        </td>
-                    </tr>
-                </table>
-
             </dd>
 
         </dl>
 
-        <script type="text/javascript">
-
-
-        /************* Base64 测试 ****************/
-
-        R("#a2u_encrypt").bind('click',function(){
-
-            R("#a2u_result").value( R.String( R("#a2u_source").value() ).unicode() );		
-
-        });
-
-        R("#u2a_encrypt").bind('click',function(){
-
-            R("#u2a_result").value( R.String( R("#u2a_source").value() ).ascii() );
-
-        });
-
-        </script>
 		</article>
 
     </div>
