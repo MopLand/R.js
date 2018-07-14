@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>R.js - 简洁高效，容易扩展 - JavaScript Library</title>
@@ -139,6 +139,39 @@
                 <p><button type="button" id="btn_api">测试</button> <strong id="msg"></strong> </p>
 
                 <p id="drag"> <img src="res/images/web20.jpg" style="position:relative;" /> </p>
+
+            </dd>
+			
+			<dt> R.assets( file[, func, target] ) </dt>
+            <dd>
+
+                <p>加载 JavaScript 到文档或指定元素中。</p>
+
+                <blockquote>
+                    <p> <strong>file</strong>  单个或多个文件资源地址</p>
+                    <p> <strong>func</strong>  回调函数</p>
+                    <p> <strong>target</strong>  插入到目标元素上，默认为 &lt;head&gt;</p>
+                </blockquote>
+
+                <pre>R.assets( 'script.js' );</pre>
+
+                <pre>R.assets( ['pack.magick.js', 'pack.upload.js'], function(){ test() } );</pre>
+				
+				<script>
+				/*
+				R.assets( 'res/images/web20.jpg', function( obj ){
+					console.log( obj );
+				} );
+				*/
+
+				/*
+				*/
+				R.assets( ['res/images/web20.jpg','http://geeduo.com/static/js/hybrid.js'], function( file1, file2 ){
+					console.log( this );
+					console.log( arguments );
+					console.log( Hybrid.config.remove );
+				} );
+				</script>
 
             </dd>
 
